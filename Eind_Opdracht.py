@@ -78,12 +78,12 @@ world_age_categories = pd.read_csv('world_age_categories.csv')
 # Boxplot
 fig_boxplot = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP ($ per capita)', 
              	color='Region')
-	fig_boxplot.update_xaxes(title_text = 'Regio')
-	fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
-	fig_boxplot.update_layout({'title':{'text':'GDP per regio', 
+fig_boxplot.update_xaxes(title_text = 'Regio')
+fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
+fig_boxplot.update_layout({'title':{'text':'GDP per regio', 
                             'x':0.5}})
     
-	st.plotly_chart(fig_boxplot)
+st.plotly_chart(fig_boxplot)
 
 
 
