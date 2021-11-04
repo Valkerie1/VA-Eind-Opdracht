@@ -87,8 +87,8 @@ def boxplot(data):
     
 	return fig_boxplot
 
-boxplot(WHO_data)
-#st.plotly_chart(fig_boxplot)
+
+st.plotly_chart(boxplot(WHO_data))
 '''
 fig_boxplot = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP ($ per capita)', 
              	color='Region')
