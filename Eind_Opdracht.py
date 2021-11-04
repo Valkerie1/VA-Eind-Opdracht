@@ -104,7 +104,7 @@ world_age_categories = pd.read_csv('world_age_categories.csv')
 
 
 # Boxplot
-fig_boxplot = px.box(data_frame=who_data, x=who_data['Region'], y='GDP ($ per capita)', 
+fig_boxplot = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP ($ per capita)', 
              color='Region')
 fig_boxplot.update_xaxes(title_text = 'Regio')
 fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
@@ -118,7 +118,7 @@ st.plotly_chart(fig_boxplot)
 
 
 # Scatterplots
-fig_scatter_GDP_InfantMortality = px.scatter(data_frame=who_data,
+fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
                 x='GDP ($ per capita)',
                 y='Infant mortality (per 1000 births)',
                 trendline='ols', 
@@ -134,7 +134,7 @@ st.plotly_chart(fig_scatter_GDP_InfantMortality)
 
 
 
-fig_scatter_GDP_Phones = px.scatter(data_frame=who_data,
+fig_scatter_GDP_Phones = px.scatter(data_frame=WHO_data,
                 x='GDP ($ per capita)',
                 y='Phones (per 1000)',
                 trendline='ols',
@@ -149,7 +149,7 @@ st.plotly_chart(fig_scatter_GDP_Phones)
 
 
 
-fig_scatter_GDP_Literacy = px.scatter(data_frame=who_data,
+fig_scatter_GDP_Literacy = px.scatter(data_frame=WHO_data,
                 x='GDP ($ per capita)',
                 y='Literacy (%)',
                 trendline='ols',
