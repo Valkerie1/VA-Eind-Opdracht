@@ -332,6 +332,6 @@ data = [go.Bar(y=y_range,
                marker=dict(color='hotpink')
                )]
 
-pyo.iplot(dict(data=data, layout=layout))
+pyo.plot(dict(data=data, layout=layout))
 
 
