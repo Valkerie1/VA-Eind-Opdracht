@@ -295,7 +295,7 @@ if kaart_opties == 'Oceanië':
 
 # Leeftijds piramide
 text_input = st.text_input(label='Zoek een land:', help='Landen beginnen met een hoofdletter en hebben geen spaties')
-leeftijdspyramid_opties = st.selectbox(label='Kies een land:', options= world_age_categories['Country'])
+leeftijdspyramid_opties = st.selectbox(label='Kies een land:', options= world_age_categories['Country'].unique())
 
 country_input = leeftijdspyramid_opties 
 
