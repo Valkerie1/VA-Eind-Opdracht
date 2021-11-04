@@ -107,7 +107,7 @@ fig_scatter_GDP_InfantMortality.update_yaxes(title_text = 'Kindersterfte (per 10
 fig_scatter_GDP_InfantMortality.update_layout({'title':{'text':'Relatie tussen GDP en kindersterfte', 
                                                                'x':0.5}})
     
-st.plotly_chart(fig_scatter_GDP_InfantMortality)
+col1.plotly_chart(fig_scatter_GDP_InfantMortality)
 
 
 
@@ -122,7 +122,7 @@ fig_scatter_GDP_Phones.update_yaxes(title_text = 'Aantal telefoons (per 1000 inw
 fig_scatter_GDP_Phones.update_layout({'title':{'text':'Relatie tussen GDP en aantal telefoons per 1000 inwoners', 
                                                       'x':0.5}})
     
-st.plotly_chart(fig_scatter_GDP_Phones)
+col2.plotly_chart(fig_scatter_GDP_Phones)
 
 
 
@@ -138,7 +138,7 @@ fig_scatter_GDP_Literacy.update_yaxes(title_text = 'Geletterdheid (in %)')
 fig_scatter_GDP_Literacy.update_layout({'title':{'text':'Relatie tussen GDP en de geletterdheid', 
                                                         'x':0.5}})
     
-st.plotly_chart(fig_scatter_GDP_Literacy)
+col3.plotly_chart(fig_scatter_GDP_Literacy)
 
 
 
