@@ -39,7 +39,9 @@ def load_who_data():
            	'BALTICS                            ':"EUROPE"}
 	who_data['Region'] = who_data['Region'].replace(mappings)
 	return who_data
-	
+
+load_who_data()
+
 '''
 # inladen van WHO data + bewerking
 who_data = pd.read_csv('countries.csv')
