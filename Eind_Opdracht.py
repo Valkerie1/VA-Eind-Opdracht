@@ -134,7 +134,7 @@ st.plotly_chart(fig_scatter_GDP_Literacy)
 
 
 kaart_opties = st.selectbox('Kies een regio:', ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië']
-
+'''
 if kaart_opties == 'Alles':
 	m = folium.Map(zoom_control = True,
 	tiles = 'cartodb positron')
@@ -287,7 +287,7 @@ if kaart_opties == 'Oceanië':
     		legend_name = "GDP ($ per capita)")
 
 	folium_static(mOCEANIA)
-
+'''
 
 
 
