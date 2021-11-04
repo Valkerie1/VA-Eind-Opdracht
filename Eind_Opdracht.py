@@ -80,6 +80,7 @@ st.markdown("<h3 style='text-align: center; color: black;'>title</h3>", unsafe_a
 st.markdown('***')
 
 
+
 col1, col2, col3 = st.columns(3)
 
 # Boxplot
@@ -93,6 +94,8 @@ fig_boxplot.update_layout({'title':{'text':'GDP per regio',
 col2.plotly_chart(fig_boxplot)
 
 
+
+col1, col2, col3 = st.columns(3)
 
 # Scatterplots
 fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
