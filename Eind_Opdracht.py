@@ -49,7 +49,7 @@ countries['ADMIN'] = countries['ADMIN'].str.replace(' ','')
 remap = {"UnitedStates" : "UnitedStatesofAmerica"}
 who_data['Country'] = who_data['Country'].replace(remap)
 
-WHO = gpd.GeoDataFrame(pd.merge(df, countries, 
+WHO = gpd.GeoDataFrame(pd.merge(who_data, countries, 
                                 left_on="Country", right_on='ADMIN'))
 
 ASIA = WHO[WHO['Region']=='ASIA']
