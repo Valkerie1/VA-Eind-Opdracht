@@ -38,6 +38,10 @@ def load_who_data():
            	'NORTHERN AMERICA                   ':"NORTHERN AMERICA",
            	'BALTICS                            ':"EUROPE"}
 	who_data['Region'] = who_data['Region'].replace(mappings)
+	who_data['Country'] = who_data['Country'].str.replace(' ','')
+	
+	remap = {"UnitedStates" : "UnitedStatesofAmerica"}
+	who_data['Country'] = who_data['Country'].replace(remap)
 	return who_data
 
 load_who_data()
@@ -74,11 +78,11 @@ who_data['Region'] = who_data['Region'].replace(mappings)
 
 # Inladen van geojson data + bewerking
 countries = gpd.read_file('countries.geojson')
-who_data['Country'] = who_data['Country'].str.replace(' ','')
+#who_data['Country'] = who_data['Country'].str.replace(' ','')
 countries['ADMIN'] = countries['ADMIN'].str.replace(' ','')
 
-remap = {"UnitedStates" : "UnitedStatesofAmerica"}
-who_data['Country'] = who_data['Country'].replace(remap)
+#remap = {"UnitedStates" : "UnitedStatesofAmerica"}
+#who_data['Country'] = who_data['Country'].replace(remap)
 
 WHO = gpd.GeoDataFrame(pd.merge(who_data, countries, 
                                 left_on="Country", right_on='ADMIN'))
