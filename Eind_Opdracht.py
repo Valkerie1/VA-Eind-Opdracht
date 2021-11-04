@@ -295,8 +295,9 @@ if kaart_opties == 'Oceanië':
 
 # Leeftijds piramide
 text_input = st.text_input(label='Zoek een land:', help='Landen beginnen met een hoofdletter en hebben geen spaties')
+leeftijdspyramid_opties = st.selectbox(label='Kies een land:', options= world_age_categories['Country'])
 
-country_input = text_input
+country_input = leeftijdspyramid_opties 
 
 y_range = world_age_categories[world_age_categories['Country']==country_input]['Age']
 men = world_age_categories[world_age_categories['Country']==country_input]['Perc_men']
