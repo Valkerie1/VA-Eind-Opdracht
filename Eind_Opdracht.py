@@ -133,48 +133,7 @@ st.plotly_chart(fig_scatter_GDP_Literacy)
 
 kaart_opties = st.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
 
-@st.cache
-def kaart_alles(data):
-	m = folium.Map(zoom_control = True,
-	tiles = 'cartodb positron')
 
-	m.choropleth(
-    		geo_data = data,
-    		name = 'geometry',
-    		data = data,
-    		columns = ["Country", "GDP ($ per capita)"],
-    		key_on = 'feature.properties.Country',
-    		line_opacity = 0.5,
-    		fill_opacity = 0.75,
-    		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
-
-	return folium_static(m)
-
-@st.cache
-def kaart_africa(data):
-	m = folium.Map(zoom_control = True,
-	tiles = 'cartodb positron')
-
-	m.choropleth(
-    		geo_data = data,
-    		name = 'geometry',
-    		data = data,
-    		columns = ["Country", "GDP ($ per capita)"],
-    		key_on = 'feature.properties.Country',
-    		line_opacity = 0.5,
-    		fill_opacity = 0.75,
-    		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
-
-	return folium_static(m)
-
-
-kaart_alles(WHO)
-kaart_africa(AFRICA)
-
-
-'''
 if kaart_opties == 'Alles':
 	m = folium.Map(zoom_control = True,
 	tiles = 'cartodb positron')
@@ -327,7 +286,7 @@ if kaart_opties == 'Oceanië':
     		legend_name = "GDP ($ per capita)")
 
 	folium_static(mOCEANIA)
-'''
+
 
 
 
@@ -335,7 +294,9 @@ if kaart_opties == 'Oceanië':
 
 
 # Leeftijds piramide
-country_input = 'Belgium'
+text_input = st.text_input(label='Zoek een land:')
+
+country_input = text_input
 
 y_range = world_age_categories[world_age_categories['Country']==country_input]['Age']
 men = world_age_categories[world_age_categories['Country']==country_input]['Perc_men']
