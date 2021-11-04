@@ -168,7 +168,8 @@ if kaart_opties == 'Alles':
     		fill_color = 'YlOrRd',
     		legend_name = "GDP ($ per capita)")
 
-	col2.folium_static(m)
+	#col2.folium_static(m)
+	col2.m
 
 if kaart_opties == 'Afrika':
 	mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
