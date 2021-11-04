@@ -95,7 +95,7 @@ col2.plotly_chart(fig_boxplot)
 
 
 
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 
 # Scatterplots
 fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
@@ -113,22 +113,6 @@ fig_scatter_GDP_InfantMortality.update_layout({'title':{'text':'Relatie tussen G
 col1.plotly_chart(fig_scatter_GDP_InfantMortality)
 
 
-
-fig_scatter_GDP_Phones = px.scatter(data_frame=WHO_data,
-                x='GDP ($ per capita)',
-                y='Phones (per 1000)',
-                trendline='ols',
-                trendline_color_override="red")
-
-fig_scatter_GDP_Phones.update_xaxes(title_text = 'GDP ($ per inwoner)')
-fig_scatter_GDP_Phones.update_yaxes(title_text = 'Aantal telefoons (per 1000 inwoners)')
-fig_scatter_GDP_Phones.update_layout({'title':{'text':'Relatie tussen GDP en aantal telefoons per 1000 inwoners', 
-                                                      'x':0.5}})
-    
-col2.plotly_chart(fig_scatter_GDP_Phones)
-
-
-
 fig_scatter_GDP_Literacy = px.scatter(data_frame=WHO_data,
                 x='GDP ($ per capita)',
                 y='Literacy (%)',
@@ -141,13 +125,33 @@ fig_scatter_GDP_Literacy.update_yaxes(title_text = 'Geletterdheid (in %)')
 fig_scatter_GDP_Literacy.update_layout({'title':{'text':'Relatie tussen GDP en de geletterdheid', 
                                                         'x':0.5}})
     
-col3.plotly_chart(fig_scatter_GDP_Literacy)
+col2.plotly_chart(fig_scatter_GDP_Literacy)
+
+
+
+fig_scatter_GDP_Phones = px.scatter(data_frame=WHO_data,
+                x='GDP ($ per capita)',
+                y='Phones (per 1000)',
+                trendline='ols',
+                trendline_color_override="red")
+
+fig_scatter_GDP_Phones.update_xaxes(title_text = 'GDP ($ per inwoner)')
+fig_scatter_GDP_Phones.update_yaxes(title_text = 'Aantal telefoons (per 1000 inwoners)')
+fig_scatter_GDP_Phones.update_layout({'title':{'text':'Relatie tussen GDP en aantal telefoons per 1000 inwoners', 
+                                                      'x':0.5}})
+    
+col1.plotly_chart(fig_scatter_GDP_Phones)
+
+
+
+
 
 
 
 
 kaart_opties = st.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
 
+col1, col2, col3 = st.columns(3)
 
 if kaart_opties == 'Alles':
 	m = folium.Map(zoom_control = True,
@@ -164,7 +168,7 @@ if kaart_opties == 'Alles':
     		fill_color = 'YlOrRd',
     		legend_name = "GDP ($ per capita)")
 
-	folium_static(m)
+	col2.folium_static(m)
 
 if kaart_opties == 'Afrika':
 	mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
