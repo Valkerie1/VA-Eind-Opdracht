@@ -133,159 +133,161 @@ st.plotly_chart(fig_scatter_GDP_Literacy)
 
 
 
-# Creeren van kaarten
-# Wereld
-m = folium.Map(zoom_control = True,
-tiles = 'cartodb positron')
+kaart_opties = st.selectbox('Kies een regio:', ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië']
 
-m.choropleth(
-    geo_data = WHO,
-    name = 'geometry',
-    data = WHO,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Alles':
+	m = folium.Map(zoom_control = True,
+	tiles = 'cartodb positron')
 
-folium_static(m)
+	m.choropleth(
+    		geo_data = WHO,
+    		name = 'geometry',
+    		data = WHO,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
 
-# Asia
-mASIA = folium.Map(zoom_control = False, zoom_start=3, location=[28.0893191, 105.1101691],
-tiles = 'cartodb positron')
+	folium_static(m)
 
-mASIA.choropleth(
-    geo_data = ASIA,
-    name = 'geometry',
-    data = ASIA,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Afrika':
+	mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
+	tiles = 'cartodb positron')
 
-folium_static(mASIA)
+	mAFRICA.choropleth(
+    		geo_data = AFRICA,
+    		name = 'geometry',
+    		data = AFRICA,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
 
-#Europe
-mEUROPE = folium.Map(zoom_control = False, zoom_start=3, location=[54.0893191, 25.1101691],
-tiles = 'cartodb positron')
+	folium_static(mAFRICA)
 
-mEUROPE.choropleth(
-    geo_data = EUROPE,
-    name = 'geometry',
-    data = EUROPE,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Asië':
+	mASIA = folium.Map(zoom_control = False, zoom_start=3, location=[28.0893191, 105.1101691],
+	tiles = 'cartodb positron')
 
-folium_static(mEUROPE)
+	mASIA.choropleth(
+    		geo_data = ASIA,
+    		name = 'geometry',
+    		data = ASIA,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
 
-#Africa
-mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
-tiles = 'cartodb positron')
+	folium_static(mASIA)
 
-mAFRICA.choropleth(
-    geo_data = AFRICA,
-    name = 'geometry',
-    data = AFRICA,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Europa':
+	mEUROPE = folium.Map(zoom_control = False, zoom_start=3, location=[54.0893191, 25.1101691],
+	tiles = 'cartodb positron')
 
-folium_static(mAFRICA)
+	mEUROPE.choropleth(
+    		geo_data = EUROPE,
+    		name = 'geometry',
+    		data = EUROPE,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
 
-#Oceania
-mOCEANIA = folium.Map(zoom_control = False, zoom_start=3, location=[-35.0893191, 140.1101691],
-tiles = 'cartodb positron')
+	folium_static(mEUROPE)
 
-mOCEANIA.choropleth(
-    geo_data = OCEANIA,
-    name = 'geometry',
-    data = OCEANIA,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Gemenebestand van onafhankelijke staten':
+	mCIS = folium.Map(zoom_control = False, zoom_start=2, location=[65.0893191, 100.1101691],
+	tiles = 'cartodb positron')
 
-folium_static(mOCEANIA)
+	mCIS.choropleth(
+    		geo_data = CIS,
+    		name = 'geometry',
+    		data = CIS,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
 
-#Latin America
-mLATINAMERICA = folium.Map(zoom_control = False, zoom_start=3, location=[-18, -60.1101691],
-tiles = 'cartodb positron')
+	folium_static(mCIS)
 
-mLATINAMERICA.choropleth(
-    geo_data = LATINAMERICA,
-    name = 'geometry',
-    data = LATINAMERICA,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Latijns-Amerika':
+	mLATINAMERICA = folium.Map(zoom_control = False, zoom_start=3, location=[-18, -60.1101691],
+	tiles = 'cartodb positron')
 
-folium_static(mLATINAMERICA)
+	mLATINAMERICA.choropleth(
+    		geo_data = LATINAMERICA,
+    		name = 'geometry',
+    		data = LATINAMERICA,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
 
-#Commonwealth of independant states (CIS)
-mCIS = folium.Map(zoom_control = False, zoom_start=2, location=[65.0893191, 100.1101691],
-tiles = 'cartodb positron')
+	folium_static(mLATINAMERICA)
 
-mCIS.choropleth(
-    geo_data = CIS,
-    name = 'geometry',
-    data = CIS,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Midden-Oosten':
+	mMIDDLEEAST = folium.Map(zoom_control = False, zoom_start=4, location=[30.0893191, 45.1101691],
+	tiles = 'cartodb positron')
 
-folium_static(mCIS)
+	mMIDDLEEAST.choropleth(
+    		geo_data = MIDDLEEAST,
+    		name = 'geometry',
+    		data = MIDDLEEAST,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
 
-#Middle east
-mMIDDLEEAST = folium.Map(zoom_control = False, zoom_start=4, location=[30.0893191, 45.1101691],
-tiles = 'cartodb positron')
+	folium_static(mMIDDLEEAST)
 
-mMIDDLEEAST.choropleth(
-    geo_data = MIDDLEEAST,
-    name = 'geometry',
-    data = MIDDLEEAST,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Noord-Amerika':
+	mNORTHERNAMERICA = folium.Map(zoom_control = False, zoom_start=2, location=[70.0893191, -110.1101691],
+	tiles = 'cartodb positron')
 
-folium_static(mMIDDLEEAST)
+	mNORTHERNAMERICA.choropleth(
+    		geo_data = NORTHERNAMERICA,
+    		name = 'geometry',
+    		data = NORTHERNAMERICA,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
 
-#Noth America
-mNORTHERNAMERICA = folium.Map(zoom_control = False, zoom_start=2, location=[70.0893191, -110.1101691],
-tiles = 'cartodb positron')
+	folium_static(mNORTHERNAMERICA)
 
-mNORTHERNAMERICA.choropleth(
-    geo_data = NORTHERNAMERICA,
-    name = 'geometry',
-    data = NORTHERNAMERICA,
-    columns = ["Country", "GDP ($ per capita)"],
-    key_on = 'feature.properties.Country',
-    line_opacity = 0.5,
-    fill_opacity = 0.75,
-    fill_color = 'YlOrRd',
-    legend_name = "GDP ($ per capita)")
+if kaart_opties == 'Oceanië':
+	mOCEANIA = folium.Map(zoom_control = False, zoom_start=3, location=[-35.0893191, 140.1101691],
+	tiles = 'cartodb positron')
 
-folium_static(mNORTHERNAMERICA)
+	mOCEANIA.choropleth(
+    		geo_data = OCEANIA,
+    		name = 'geometry',
+    		data = OCEANIA,
+    		columns = ["Country", "GDP ($ per capita)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "GDP ($ per capita)")
+
+	folium_static(mOCEANIA)
+
 
 
 
@@ -308,7 +310,7 @@ fig_bar_population = go.Figure()
 fig_bar_population.add_trace(go.Bar(y=y_range, x=-men, name='Male', orientation = 'h'))
 fig_bar_population.add_trace(go.Bar(y=y_range, x=women, name='Female', orientation = 'h'))
 
-fig_bar_population.update_layout(title={'text': 'Bevolkingspiramide '+str(country_input), 'x' : 0.5},
+fig_bar_population.update_layout(title={'text': 'Population pyramid of '+str(country_input), 'x' : 0.5},
                  xaxis={'range':layout_range,
                        'tickvals':layout_tick_vals,
                        'ticktext':layout_tick_text,
