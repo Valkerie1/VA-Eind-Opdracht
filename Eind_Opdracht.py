@@ -294,7 +294,7 @@ if kaart_opties == 'Oceanië':
 
 
 # Leeftijds piramide
-text_input = st.text_input(label='Zoek een land:')
+text_input = st.text_input(label='Zoek een land:', help='Landen beginnen met een hoofdletter en hebben geen spaties')
 
 country_input = text_input
 
