@@ -90,7 +90,7 @@ fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
 fig_boxplot.update_layout({'title':{'text':'GDP per regio', 
                             'x':0.5}})
     
-col2.st.plotly_chart(fig_boxplot)
+col2.markdown(st.plotly_chart(fig_boxplot))
 
 
 
