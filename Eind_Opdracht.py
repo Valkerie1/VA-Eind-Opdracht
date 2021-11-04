@@ -76,7 +76,7 @@ fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
 fig_boxplot.update_layout({'title':{'text':'GDP per regio', 
                             'x':0.5}})
     
-fig_boxplot.show()
+st.plotly_chart(fig_boxplot)
 
 
 
@@ -95,7 +95,7 @@ fig_scatter_GDP_InfantMortality.update_yaxes(title_text = 'Kindersterfte (per 10
 fig_scatter_GDP_InfantMortality.update_layout({'title':{'text':'Relatie tussen GDP en kindersterfte', 
                                                                'x':0.5}})
     
-fig_scatter_GDP_InfantMortality.show()
+st.plotly_chart(fig_scatter_GDP_InfantMortality)
 
 
 
@@ -110,7 +110,7 @@ fig_scatter_GDP_Phones.update_yaxes(title_text = 'Aantal telefoons (per 1000 inw
 fig_scatter_GDP_Phones.update_layout({'title':{'text':'Relatie tussen GDP en aantal telefoons per 1000 inwoners', 
                                                       'x':0.5}})
     
-fig_scatter_GDP_Phones.show()
+st.plotly_chart(fig_scatter_GDP_Phones)
 
 
 
@@ -126,7 +126,7 @@ fig_scatter_GDP_Literacy.update_yaxes(title_text = 'Geletterdheid (in %)')
 fig_scatter_GDP_Literacy.update_layout({'title':{'text':'Relatie tussen GDP en de geletterdheid', 
                                                         'x':0.5}})
     
-fig_scatter_GDP_Literacy.show()
+st.plotly_chart(fig_scatter_GDP_Literacy)
 
 
 
@@ -149,7 +149,7 @@ m.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-m
+folium_static(m)
 
 # Asia
 mASIA = folium.Map(zoom_control = False, zoom_start=3, location=[28.0893191, 105.1101691],
@@ -166,7 +166,7 @@ mASIA.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-mASIA
+folium_static(mASIA)
 
 #Europe
 mEUROPE = folium.Map(zoom_control = False, zoom_start=3, location=[54.0893191, 25.1101691],
@@ -183,7 +183,7 @@ mEUROPE.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-mEUROPE
+folium_static(mEUROPE)
 
 #Africa
 mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
@@ -200,7 +200,7 @@ mAFRICA.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-mAFRICA
+folium_static(mAFRICA)
 
 #Oceania
 mOCEANIA = folium.Map(zoom_control = False, zoom_start=3, location=[-35.0893191, 140.1101691],
@@ -217,7 +217,7 @@ mOCEANIA.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-mOCEANIA
+folium_static(mOCEANIA)
 
 #Latin America
 mLATINAMERICA = folium.Map(zoom_control = False, zoom_start=3, location=[-18, -60.1101691],
@@ -234,7 +234,7 @@ mLATINAMERICA.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-mLATINAMERICA
+folium_static(mLATINAMERICA)
 
 #Commonwealth of independant states (CIS)
 mCIS = folium.Map(zoom_control = False, zoom_start=3, location=[65.0893191, 100.1101691],
@@ -251,7 +251,7 @@ mCIS.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-mCIS
+folium_static(mCIS)
 
 #Middle east
 mMIDDLEEAST = folium.Map(zoom_control = False, zoom_start=4, location=[30.0893191, 45.1101691],
@@ -268,7 +268,7 @@ mMIDDLEEAST.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-mMIDDLEEAST
+folium_static(mMIDDLEEAST)
 
 #Noth America
 mNORTHERNAMERICA = folium.Map(zoom_control = False, zoom_start=2, location=[70.0893191, -110.1101691],
@@ -285,7 +285,7 @@ mNORTHERNAMERICA.choropleth(
     fill_color = 'YlOrRd',
     legend_name = "GDP ($ per capita)")
 
-mNORTHERNAMERICA
+folium_static(mNORTHERNAMERICA)
 
 
 
@@ -332,6 +332,6 @@ data = [go.Bar(y=y_range,
                marker=dict(color='hotpink')
                )]
 
-pyo.iplot(dict(data=data, layout=layout))
+st.plotly_chart(pyo.iplot(dict(data=data, layout=layout)))
 
 
