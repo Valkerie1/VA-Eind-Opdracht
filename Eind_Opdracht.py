@@ -301,37 +301,24 @@ women = world_age_categories[world_age_categories['Country']==country_input]['Pe
 
 layout_range = [-round(men.max(),0)-2, round(women.max(),0)+2]
 layout_tick_vals = [-round(men.max(),0), -round(men.max()/2,0) , 0 , round(women.max()/2,0) , round(women.max(),0)]
-layout_tick_text = [-round(men.max(),0), -round(men.max()/2,0) , 0 , round(women.max()/2,0) , round(women.max(),0)]
+layout_tick_text = [str(-round(men.max(),0))+'%', str(-round(men.max()/2,0))+'%' , str(0)+'%' , str(round(women.max()/2,0))+'%' , str(round(women.max(),0))+'%']
 
-layout = go.Layout(yaxis=go.layout.YAxis(title='Leeftijd'),
-                   xaxis=go.layout.XAxis(
-                       range=layout_range,
-                       tickvals=layout_tick_vals,
-                       ticktext=layout_tick_text,
-                       title='Percentage van de bevolking'),
-                   title={'text': 'Verdeling van de bevolking over leeftijds categorieën', 'x' : 0.5},
-                   barmode='overlay',
-                   bargap=0.1)
+fig_bar_population = go.Figure()
 
-data = [go.Bar(y=y_range,
-               x=-men,
-               orientation='h',
-               name='Men',
-               text= men.astype('float'),
-               textposition='outside',
-               hoverinfo= 'text',
-               marker=dict(color='powderblue')
-               ),
-        go.Bar(y=y_range,
-               x=women,
-               orientation='h',
-               name='Women',
-               text= women.astype('float'),
-               textposition='outside',
-               hoverinfo= 'text',
-               marker=dict(color='hotpink')
-               )]
+fig_bar_population.add_trace(go.Bar(y=y_range, x=-men, name='Male', orientation = 'h'))
+fig_bar_population.add_trace(go.Bar(y=y_range, x=women, name='Female', orientation = 'h'))
 
-pyo.plot(dict(data=data, layout=layout))
+fig_bar_population.update_layout(title={'text': 'Verdeling van de bevolking over leeftijds categorieën', 'x' : 0.5},
+                 xaxis={'range':layout_range,
+                       'tickvals':layout_tick_vals,
+                       'ticktext':layout_tick_text,
+                       'title':'Percentage van de bevolking'},
+                 yaxis={'title':'Leeftijd'},
+                 barmode='overlay',
+                 bargap=0.1,
+                 hovermode='x'
+                 )               
+
+st.plotly_chart(fig_bar_population)
 
 
