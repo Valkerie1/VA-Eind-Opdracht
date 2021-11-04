@@ -11,7 +11,36 @@ import folium
 
 st.set_page_config(page_title = 'Streamlit Dashboard', layout= 'wide')
 
+@st.cache
+def load_who_data():
+	who_data = pd.read_csv('countries.csv')
 
+	who_data.drop(['Arable (%)', 'Crops (%)', 'Other (%)', 'Agriculture', 'Industry', 'Service', 'Climate'], axis=1, inplace=True)
+
+	who_data['Pop. Density (per sq. mi.)'] = who_data['Pop. Density (per sq. mi.)'].str.replace(',', '.').astype(float)
+	who_data['Coastline (coast/area ratio)'] = who_data['Coastline (coast/area ratio)'].str.replace(',', '.').astype(float)
+	who_data['Net migration'] = who_data['Net migration'].str.replace(',', '.').astype(float)
+	who_data['Infant mortality (per 1000 births)'] = who_data['Infant mortality (per 1000 births)'].str.replace(',', '.').astype(float)
+	who_data['Literacy (%)'] = who_data['Literacy (%)'].str.replace(',', '.').astype(float)
+	who_data['Phones (per 1000)'] = who_data['Phones (per 1000)'].str.replace(',', '.').astype(float)
+	who_data['Birthrate'] = who_data['Birthrate'].str.replace(',', '.').astype(float)
+	who_data['Deathrate'] = who_data['Deathrate'].str.replace(',', '.').astype(float)
+
+	mappings = {'ASIA (EX. NEAR EAST)         ':"ASIA",
+           	'EASTERN EUROPE                     ':"EUROPE",
+           	'NORTHERN AFRICA                    ':"AFRICA",
+           	'OCEANIA                            ':"OCEANIA",
+           	'WESTERN EUROPE                     ':"EUROPE",
+           	'SUB-SAHARAN AFRICA                 ':"AFRICA",
+           	'LATIN AMER. & CARIB    ':"LATIN AMERICA",
+           	'C.W. OF IND. STATES ':"CIS",
+           	'NEAR EAST                          ':"MIDDLE EAST",
+           	'NORTHERN AMERICA                   ':"NORTHERN AMERICA",
+           	'BALTICS                            ':"EUROPE"}
+	who_data['Region'] = who_data['Region'].replace(mappings)
+	return who_data
+	
+'''
 # inladen van WHO data + bewerking
 who_data = pd.read_csv('countries.csv')
 
@@ -38,7 +67,7 @@ mappings = {'ASIA (EX. NEAR EAST)         ':"ASIA",
            'NORTHERN AMERICA                   ':"NORTHERN AMERICA",
            'BALTICS                            ':"EUROPE"}
 who_data['Region'] = who_data['Region'].replace(mappings)
-
+'''
 
 
 # Inladen van geojson data + bewerking
