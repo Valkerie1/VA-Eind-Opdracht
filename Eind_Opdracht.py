@@ -44,7 +44,7 @@ def load_who_data():
 	who_data['Country'] = who_data['Country'].replace(remap)
 	return who_data
 
-load_who_data()
+WHO_data = load_who_data()
 
 '''
 # inladen van WHO data + bewerking
@@ -84,7 +84,7 @@ countries['ADMIN'] = countries['ADMIN'].str.replace(' ','')
 #remap = {"UnitedStates" : "UnitedStatesofAmerica"}
 #who_data['Country'] = who_data['Country'].replace(remap)
 
-WHO = gpd.GeoDataFrame(pd.merge(who_data, countries, 
+WHO = gpd.GeoDataFrame(pd.merge(WHO_data, countries, 
                                 left_on="Country", right_on='ADMIN'))
 
 ASIA = WHO[WHO['Region']=='ASIA']
