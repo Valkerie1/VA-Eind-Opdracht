@@ -46,34 +46,6 @@ def load_who_data():
 
 WHO_data = load_who_data()
 
-'''
-# inladen van WHO data + bewerking
-who_data = pd.read_csv('countries.csv')
-
-who_data.drop(['Arable (%)', 'Crops (%)', 'Other (%)', 'Agriculture', 'Industry', 'Service', 'Climate'], axis=1, inplace=True)
-
-who_data['Pop. Density (per sq. mi.)'] = who_data['Pop. Density (per sq. mi.)'].str.replace(',', '.').astype(float)
-who_data['Coastline (coast/area ratio)'] = who_data['Coastline (coast/area ratio)'].str.replace(',', '.').astype(float)
-who_data['Net migration'] = who_data['Net migration'].str.replace(',', '.').astype(float)
-who_data['Infant mortality (per 1000 births)'] = who_data['Infant mortality (per 1000 births)'].str.replace(',', '.').astype(float)
-who_data['Literacy (%)'] = who_data['Literacy (%)'].str.replace(',', '.').astype(float)
-who_data['Phones (per 1000)'] = who_data['Phones (per 1000)'].str.replace(',', '.').astype(float)
-who_data['Birthrate'] = who_data['Birthrate'].str.replace(',', '.').astype(float)
-who_data['Deathrate'] = who_data['Deathrate'].str.replace(',', '.').astype(float)
-
-mappings = {'ASIA (EX. NEAR EAST)         ':"ASIA",
-           'EASTERN EUROPE                     ':"EUROPE",
-           'NORTHERN AFRICA                    ':"AFRICA",
-           'OCEANIA                            ':"OCEANIA",
-           'WESTERN EUROPE                     ':"EUROPE",
-           'SUB-SAHARAN AFRICA                 ':"AFRICA",
-           'LATIN AMER. & CARIB    ':"LATIN AMERICA",
-           'C.W. OF IND. STATES ':"CIS",
-           'NEAR EAST                          ':"MIDDLE EAST",
-           'NORTHERN AMERICA                   ':"NORTHERN AMERICA",
-           'BALTICS                            ':"EUROPE"}
-who_data['Region'] = who_data['Region'].replace(mappings)
-'''
 
 
 # Inladen van geojson data + bewerking
@@ -104,17 +76,29 @@ world_age_categories = pd.read_csv('world_age_categories.csv')
 
 
 # Boxplot
-fig_boxplot = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP ($ per capita)', 
-             color='Region')
-fig_boxplot.update_xaxes(title_text = 'Regio')
-fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
-fig_boxplot.update_layout({'title':{'text':'GDP per regio', 
+@st.cache
+def boxplot(data):
+	fig_boxplot = px.box(data_frame=data, x=data['Region'], y='GDP ($ per capita)', 
+             	color='Region')
+	fig_boxplot.update_xaxes(title_text = 'Regio')
+	fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
+	fig_boxplot.update_layout({'title':{'text':'GDP per regio', 
                             'x':0.5}})
     
+	return fig_boxplot
+
+boxplot(WHO_data)
 st.plotly_chart(fig_boxplot)
-
-
-
+'''
+fig_boxplot = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP ($ per capita)', 
+             	color='Region')
+	fig_boxplot.update_xaxes(title_text = 'Regio')
+	fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
+	fig_boxplot.update_layout({'title':{'text':'GDP per regio', 
+                            'x':0.5}})
+    
+	st.plotly_chart(fig_boxplot)
+'''
 
 
 # Scatterplots
