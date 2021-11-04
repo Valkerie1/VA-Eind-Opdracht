@@ -150,7 +150,7 @@ if kaart_opties == 'Alles':
     		legend_name = "GDP ($ per capita)")
 
 	folium_static(m)
-'''
+
 if kaart_opties == 'Afrika':
 	mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
 	tiles = 'cartodb positron')
@@ -286,7 +286,7 @@ if kaart_opties == 'Oceanië':
     		legend_name = "GDP ($ per capita)")
 
 	folium_static(mOCEANIA)
-'''
+
 
 
 
