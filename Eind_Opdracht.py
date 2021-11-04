@@ -237,7 +237,7 @@ mLATINAMERICA.choropleth(
 folium_static(mLATINAMERICA)
 
 #Commonwealth of independant states (CIS)
-mCIS = folium.Map(zoom_control = False, zoom_start=3, location=[65.0893191, 100.1101691],
+mCIS = folium.Map(zoom_control = False, zoom_start=2, location=[65.0893191, 100.1101691],
 tiles = 'cartodb positron')
 
 mCIS.choropleth(
@@ -332,6 +332,6 @@ data = [go.Bar(y=y_range,
                marker=dict(color='hotpink')
                )]
 
-st.plotly_chart(pyo.iplot(dict(data=data, layout=layout)))
+pyo.iplot(dict(data=data, layout=layout))
 
 
