@@ -151,8 +151,6 @@ col1.plotly_chart(fig_scatter_GDP_Phones)
 
 kaart_opties = st.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
 
-col1, col2, col3 = st.columns(3)
-
 if kaart_opties == 'Alles':
 	m = folium.Map(zoom_control = True,
 	tiles = 'cartodb positron')
@@ -168,8 +166,8 @@ if kaart_opties == 'Alles':
     		fill_color = 'YlOrRd',
     		legend_name = "GDP ($ per capita)")
 
-	#col2.folium_static(m)
-	col2.m
+	folium_static(m)
+	
 
 if kaart_opties == 'Afrika':
 	mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
