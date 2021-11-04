@@ -131,7 +131,7 @@ st.plotly_chart(fig_scatter_GDP_Literacy)
 
 
 
-st.selectbox(label= 'test', options= ['Alles','Afrika'])
+kaart_opties = st.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
 
 '''
 if kaart_opties == 'Alles':
