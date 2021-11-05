@@ -176,7 +176,7 @@ st.markdown("<h3 style='text-align: center; color: black;'>Wereldkaart</h3>", un
 st.markdown('***')
 
 
-Kaart_variable_opties = st.selectbox(label= 'Kies een variable:' , options= ['GDP' , 'Sterfgevallen']
+Kaart_variable_opties = st.selectbox(label= 'Kies een variable:' , options= ['GDP' , 'Sterfgevallen'])
 
 if Kaart_variable_opties == 'GDP':
 	kaart_opties = st.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
