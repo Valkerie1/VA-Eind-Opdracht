@@ -176,11 +176,15 @@ st.markdown("<h3 style='text-align: center; color: black;'>Wereldkaart</h3>", un
 st.markdown('***')
 
 
-Kaart_variable_opties = st.selectbox(label= 'Kies een variable:' , options= ['GDP' , 'Sterfgevallen'])
+
+col1, col2 = st.columns(2)
+
+Kaart_variable_opties = col1.selectbox(label= 'Kies een variable:' , options= ['GDP' , 'Sterfgevallen'])
+kaart_opties = col2.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
+
 
 if Kaart_variable_opties == 'GDP':
-	kaart_opties = st.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
-
+	
 	if kaart_opties == 'Alles':
 		m = folium.Map(zoom_control = True,
 		tiles = 'cartodb positron')
@@ -336,8 +340,7 @@ if Kaart_variable_opties == 'GDP':
 		folium_static(mOCEANIA)
 
 if Kaart_variable_opties == 'Sterfgevallen':
-	kaart_opties = st.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
-
+	
 	if kaart_opties == 'Alles':
 		m = folium.Map(zoom_control = True,
 		tiles = 'cartodb positron')
