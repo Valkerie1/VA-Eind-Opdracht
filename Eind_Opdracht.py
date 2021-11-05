@@ -127,8 +127,8 @@ if boxplot_selectbox == 'Kindersterfte per regio':
 
 with st.expander('Meer informatie:'):
 	st.header('Boxplot extra informatie')
-	st.markdown('De boxplots geven informatie weer voor 8 regio's op de wereld. 
-		     De weergegeven waardes zijn het gemiddelde van de landen die zich binnen dezelfde regio bevinden.')
+	st.markdown('''De boxplots geven informatie weer voor 8 regio's op de wereld. 
+		     De weergegeven waardes zijn het gemiddelde van de landen die zich binnen dezelfde regio bevinden.''')
 
 
 
@@ -371,12 +371,12 @@ st.plotly_chart(fig_bar_population)
 
 with st.expander('Meer informatie:'):
 	st.header('Leeftijdspiramide extra informatie')
-	st.markdown('De Leeftijdspiramide geeft weer hoe de leeftijd binnen een bepaald land is opgebouwd. 
+	st.markdown('''De Leeftijdspiramide geeft weer hoe de leeftijd binnen een bepaald land is opgebouwd. 
 		     Dit wordt gedaan door het land in verschillende leeftijdscategorieën op te delen.
 		     Daarna wordt het percentage berekend dat zich in elke leeftijdscategorie bevind.
 		     Een gezonde bevolking heeft in elke leeftijdscategorie het zelfde percentage zitten.
 		     Als de lagere categorieën een hoog percentage hebben dan heeft het land te maken met 
 		     veel geboortes of veel sterfgevallen. Als de hogere categorieën een hoog percentage hebben
-		     dan betekend dit dat er weinig geboortes zijn en dus dat de bevolking vergrijsd')
+		     dan betekend dit dat er weinig geboortes zijn en dus dat de bevolking vergrijsd''')
 
 
