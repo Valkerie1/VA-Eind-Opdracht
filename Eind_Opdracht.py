@@ -11,6 +11,21 @@ import folium
 
 st.set_page_config(page_title = 'Streamlit Dashboard', layout= 'wide')
 
+st.markdown('***')
+st.markdown("<h3 style='text-align: center; color: black;'>Levensverwachting over de wereld</h3>", unsafe_allow_html=True)
+st.markdown('***')
+
+st.markdown('''
+
+beetje text
+
+''')
+
+
+
+
+
+
 @st.cache
 def load_who_data():
 	who_data = pd.read_csv('countries.csv')
@@ -75,29 +90,50 @@ world_age_categories = pd.read_csv('world_age_categories.csv')
 
 
 
-st.markdown('***')
-st.markdown("<h3 style='text-align: center; color: black;'>title</h3>", unsafe_allow_html=True)
-st.markdown('***')
 
 
 
-col1, col2, col3 = st.columns(3)
 
-# Boxplot
-fig_boxplot = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP ($ per capita)', 
-             	color='Region')
-fig_boxplot.update_xaxes(title_text = 'Regio')
-fig_boxplot.update_yaxes(title_text = 'GDP ($ per inwoner)')
-fig_boxplot.update_layout({'title':{'text':'GDP per regio', 
+boxplot_selectbox = st.selectbox(label='', options=['GDP per regio' , 'Sterfgevallen per regio' , 'Kindersterfte per regio']) 
+
+if boxplot_selectbox == 'GDP per regio':
+	fig_boxplot_gdp = px.box(data_frame=df, x=df['Region'], y='GDP ($ per capita)', 
+             color='Region')
+	fig_boxplot_gdp.update_xaxes(title_text = 'Regio')
+	fig_boxplot_gdp.update_yaxes(title_text = 'GDP ($ per inwoner)')
+	fig_boxplot_gdp.update_layout({'title':{'text':'GDP per regio', 
                             'x':0.5}})
-    
-col2.plotly_chart(fig_boxplot)
+	st.plotly_chart(fig_boxplot_gdp)
+
+if boxplot_selectbox == 'Sterfgevallen per regio':
+	fig_boxplot_sterfgevallen = px.box(data_frame=df, x=df['Region'], y='Deathrate', 
+             color='Region')
+	fig_boxplot_sterfgevallen.update_xaxes(title_text = 'Regio')
+	fig_boxplot_sterfgevallen.update_yaxes(title_text = 'Sterfgevallen (per 1.000 inwoners)')
+	fig_boxplot_sterfgevallen.update_layout({'title':{'text':'Sterfgevallen per regio', 
+                            'x':0.5}})
+	st.plotly_chart(fig_boxplot_sterfgevallen)
+
+if boxplot_selectbox == 'Kindersterfte per regio':
+	fig_boxplot_kindersterfte = px.box(data_frame=df, x=df['Region'], y='Infant mortality (per 1000 births)', 
+             color='Region')
+	fig_boxplot_kindersterfte.update_xaxes(title_text = 'Regio')
+	fig_boxplot_kindersterfte.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes)')
+	fig_boxplot_kindersterfte.update_layout({'title':{'text':'Kindersterfte per regio', 
+                            'x':0.5}})
+	st.plotly_chart(fig_boxplot_kindersterfte)
+
+
+
+with st.expander('Meer informatie:'):
+	st.header('Boxplot extra informatie')
+	st.markdown('De boxplots geven informatie weer voor 8 regio's op de wereld. 
+		     De weergegeven waardes zijn het gemiddelde van de landen die zich binnen dezelfde regio bevinden.')
 
 
 
 col1, col2 = st.columns(2)
 
-# Scatterplots
 fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
                 x='GDP ($ per capita)',
                 y='Infant mortality (per 1000 births)',
@@ -129,23 +165,12 @@ col2.plotly_chart(fig_scatter_GDP_Literacy)
 
 
 
-fig_scatter_GDP_Phones = px.scatter(data_frame=WHO_data,
-                x='GDP ($ per capita)',
-                y='Phones (per 1000)',
-                trendline='ols',
-                trendline_color_override="red")
-
-fig_scatter_GDP_Phones.update_xaxes(title_text = 'GDP ($ per inwoner)')
-fig_scatter_GDP_Phones.update_yaxes(title_text = 'Aantal telefoons (per 1000 inwoners)')
-fig_scatter_GDP_Phones.update_layout({'title':{'text':'Relatie tussen GDP en aantal telefoons per 1000 inwoners', 
-                                                      'x':0.5}})
-    
-col1.plotly_chart(fig_scatter_GDP_Phones)
 
 
 
-
-
+st.markdown('***')
+st.markdown("<h3 style='text-align: center; color: black;'>Wereldkaart</h3>", unsafe_allow_html=True)
+st.markdown('***')
 
 
 
@@ -307,12 +332,11 @@ if kaart_opties == 'Oceanië':
 
 
 
+st.markdown('***')
+st.markdown("<h3 style='text-align: center; color: black;'>Leeftijdspiramide per land</h3>", unsafe_allow_html=True)
+st.markdown('***')
 
 
-
-
-# Leeftijds piramide
-#text_input = st.text_input(label='Zoek een land:', help='Landen beginnen met een hoofdletter')
 leeftijdspyramid_opties = st.selectbox(label='Kies een land:', options= world_age_categories['Country'].unique(), index=0)
 
 country_input = leeftijdspyramid_opties
@@ -342,5 +366,17 @@ fig_bar_population.update_layout(title={'text': 'Population pyramid of '+str(cou
                  )               
 
 st.plotly_chart(fig_bar_population)
+
+
+
+with st.expander('Meer informatie:'):
+	st.header('Leeftijdspiramide extra informatie')
+	st.markdown('De Leeftijdspiramide geeft weer hoe de leeftijd binnen een bepaald land is opgebouwd. 
+		     Dit wordt gedaan door het land in verschillende leeftijdscategorieën op te delen.
+		     Daarna wordt het percentage berekend dat zich in elke leeftijdscategorie bevind.
+		     Een gezonde bevolking heeft in elke leeftijdscategorie het zelfde percentage zitten.
+		     Als de lagere categorieën een hoog percentage hebben dan heeft het land te maken met 
+		     veel geboortes of veel sterfgevallen. Als de hogere categorieën een hoog percentage hebben
+		     dan betekend dit dat er weinig geboortes zijn en dus dat de bevolking vergrijsd')
 
 
