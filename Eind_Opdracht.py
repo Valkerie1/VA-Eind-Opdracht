@@ -710,8 +710,9 @@ st.markdown('***')
 
 modeldf = WHO_data
 modeldf.rename({'GDP ($ per capita)':'GDP', 'Infant mortality (per 1000 births)':'Infant_mortality','Phones (per 1000)':'Phones'},axis=1,inplace=True)
-model_infant = ols('Infant_mortality ~ GDP ', data=modeldf).fit()
+modeldf['Infant_log'] = np.log(modeldf['Infant_mortality'])
 
+model_infant = ols('Infant_mortality ~ GDP ', data=modeldf).fit()
 px.scatter(x='GDP', y='Infant_mortality', data_frame=modeldf, trendline='ols', trendline_color_override='red')
 
 model_infant_log = ols('Infant_log ~ GDP ', data=modeldf).fit()
