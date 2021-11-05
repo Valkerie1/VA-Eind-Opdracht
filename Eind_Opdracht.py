@@ -708,6 +708,7 @@ st.markdown('***')
 st.markdown("<h3 style='text-align: center; color: black;'>Kindersterfte linear model</h3>", unsafe_allow_html=True)
 st.markdown('***')	
 
+'''
 modeldf = WHO_data.rename({'GDP ($ per capita)':'GDP','Infant mortality (per 1000 births)':'Infant_mortality'},axis=1,inplace=True)
 
 st.table(modeldf)
@@ -718,6 +719,6 @@ px.scatter(x='GDP', y='Infant_mortality', data_frame=modeldf, trendline='ols', t
 
 model_infant_log = ols('Infant_log ~ GDP ', data=modeldf).fit()
 px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendline_color_override='red')
-
+'''
 
 
