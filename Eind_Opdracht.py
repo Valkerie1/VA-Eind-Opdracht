@@ -12,7 +12,7 @@ import folium
 st.set_page_config(page_title = 'Streamlit Dashboard', layout= 'wide')
 
 st.markdown('***')
-st.markdown("<h3 style='text-align: center; color: black;'>Levensverwachting over de wereld</h3>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: black;'>Levensverwachting over de wereld</h1>", unsafe_allow_html=True)
 st.markdown('***')
 
 st.markdown('''
@@ -126,10 +126,13 @@ if boxplot_selectbox == 'Kindersterfte per regio':
 
 
 with st.expander('Meer informatie:'):
-	st.header('Boxplot extra informatie')
+	st.subheader('Boxplot extra informatie')
 	st.markdown('''De boxplots geven informatie weer voor 8 regio's op de wereld. 
 		     De weergegeven waardes zijn het gemiddelde van de landen die zich binnen dezelfde regio bevinden.''')
 
+	
+	
+st.markdown('***')	
 
 
 col1, col2 = st.columns(2)
@@ -370,7 +373,7 @@ st.plotly_chart(fig_bar_population)
 
 
 with st.expander('Meer informatie:'):
-	st.header('Leeftijdspiramide extra informatie')
+	st.subheader('Leeftijdspiramide extra informatie')
 	st.markdown('''De Leeftijdspiramide geeft weer hoe de leeftijd binnen een bepaald land is opgebouwd. 
 		     Dit wordt gedaan door het land in verschillende leeftijdscategorieën op te delen.
 		     Daarna wordt het percentage berekend dat zich in elke leeftijdscategorie bevind.
