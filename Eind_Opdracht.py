@@ -186,7 +186,7 @@ kaart_opties = col2.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afri
 if Kaart_variable_opties == 'GDP':
 	
 	if kaart_opties == 'Alles':
-		m = folium.Map(zoom_control = True, zoom_start=1, location=[20,0],
+		m = folium.Map(zoom_control = True, zoom_start=1, location=[50,0],
 		tiles = 'cartodb positron')
 
 		m.choropleth(
