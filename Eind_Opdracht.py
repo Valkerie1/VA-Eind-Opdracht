@@ -709,10 +709,8 @@ st.markdown("<h3 style='text-align: center; color: black;'>Kindersterfte linear 
 st.markdown('***')	
 
 modeldf = WHO_data
-if modeldf.columns.any() == 'GDP ($ per capita)':
-	modeldf.rename({'GDP ($ per capita)':'GDP'},axis=1,inplace=True)
-if modeldf.columns.any() == 'Infant mortality (per 1000 births)':
-	modeldf.rename({'Infant mortality (per 1000 births)':'Infant_mortality'},axis=1,inplace=True)
+modeldf.rename({'GDP ($ per capita)':'GDP'},axis=1,inplace=True)
+modeldf.rename({'Infant mortality (per 1000 births)':'Infant_mortality'},axis=1,inplace=True)
 st.table(modeldf)
 '''
 modeldf['Infant_log'] = np.log(modeldf['Infant_mortality'])
