@@ -179,14 +179,14 @@ st.markdown('***')
 
 col1, col2 = st.columns(2)
 
-Kaart_variable_opties = col1.selectbox(label= 'Kies een variable:' , options= ['GDP' , 'Sterfgevallen'])
+Kaart_variable_opties = col1.selectbox(label= 'Kies een variable:' , options= ['GDP' , 'Sterfgevallen' , 'Kindersterfte'])
 kaart_opties = col2.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
 
 
 if Kaart_variable_opties == 'GDP':
 	
 	if kaart_opties == 'Alles':
-		m = folium.Map(zoom_control = True, zoom_start=2, location=[50,0],
+		m = folium.Map(zoom_control = True, zoom_start=1, location=[50,0],
 		tiles = 'cartodb positron')
 
 		m.choropleth(
@@ -342,7 +342,7 @@ if Kaart_variable_opties == 'GDP':
 if Kaart_variable_opties == 'Sterfgevallen':
 	
 	if kaart_opties == 'Alles':
-		m = folium.Map(zoom_control = True,
+		m = folium.Map(zoom_control = True, zoom_start=1, location=[50,0],
 		tiles = 'cartodb positron')
 
 		m.choropleth(
@@ -494,6 +494,162 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		legend_name = "Sterfgevallen (per 1.000 inwoners)")
 
 		folium_static(mOCEANIA)
+		
+if Kaart_variable_opties == 'Kindersterfte':
+	
+	if kaart_opties == 'Alles':
+		m = folium.Map(zoom_control = True, zoom_start=1, location=[50,0],
+		tiles = 'cartodb positron')
+
+		m.choropleth(
+    		geo_data = WHO,
+    		name = 'geometry',
+    		data = WHO,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(m)
+	
+
+	if kaart_opties == 'Afrika':
+		mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
+		tiles = 'cartodb positron')
+
+		mAFRICA.choropleth(
+    		geo_data = AFRICA,
+    		name = 'geometry',
+    		data = AFRICA,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(mAFRICA)
+
+	if kaart_opties == 'Asië':
+		mASIA = folium.Map(zoom_control = False, zoom_start=3, location=[28.0893191, 105.1101691],
+		tiles = 'cartodb positron')
+
+		mASIA.choropleth(
+    		geo_data = ASIA,
+    		name = 'geometry',
+    		data = ASIA,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(mASIA)
+
+	if kaart_opties == 'Europa':
+		mEUROPE = folium.Map(zoom_control = False, zoom_start=3, location=[54.0893191, 25.1101691],
+		tiles = 'cartodb positron')
+
+		mEUROPE.choropleth(
+    		geo_data = EUROPE,
+    		name = 'geometry',
+    		data = EUROPE,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(mEUROPE)
+
+	if kaart_opties == 'Gemenebestand van onafhankelijke staten':
+		mCIS = folium.Map(zoom_control = False, zoom_start=2, location=[65.0893191, 100.1101691],
+		tiles = 'cartodb positron')
+
+		mCIS.choropleth(
+    		geo_data = CIS,
+    		name = 'geometry',
+    		data = CIS,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(mCIS)
+
+	if kaart_opties == 'Latijns-Amerika':
+		mLATINAMERICA = folium.Map(zoom_control = False, zoom_start=3, location=[-18, -60.1101691],
+		tiles = 'cartodb positron')
+
+		mLATINAMERICA.choropleth(
+    		geo_data = LATINAMERICA,
+    		name = 'geometry',
+    		data = LATINAMERICA,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(mLATINAMERICA)
+
+	if kaart_opties == 'Midden-Oosten':
+		mMIDDLEEAST = folium.Map(zoom_control = False, zoom_start=4, location=[30.0893191, 45.1101691],
+		tiles = 'cartodb positron')
+
+		mMIDDLEEAST.choropleth(
+    		geo_data = MIDDLEEAST,
+    		name = 'geometry',
+    		data = MIDDLEEAST,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(mMIDDLEEAST)
+
+	if kaart_opties == 'Noord-Amerika':
+		mNORTHERNAMERICA = folium.Map(zoom_control = False, zoom_start=2, location=[70.0893191, -110.1101691],
+		tiles = 'cartodb positron')
+
+		mNORTHERNAMERICA.choropleth(
+    		geo_data = NORTHERNAMERICA,
+    		name = 'geometry',
+    		data = NORTHERNAMERICA,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(mNORTHERNAMERICA)
+
+	if kaart_opties == 'Oceanië':
+		mOCEANIA = folium.Map(zoom_control = False, zoom_start=3, location=[-35.0893191, 140.1101691],
+		tiles = 'cartodb positron')
+
+		mOCEANIA.choropleth(
+    		geo_data = OCEANIA,
+    		name = 'geometry',
+    		data = OCEANIA,
+    		columns = ["Country", "Infant mortality (per 1000 births)"],
+    		key_on = 'feature.properties.Country',
+    		line_opacity = 0.5,
+    		fill_opacity = 0.75,
+    		fill_color = 'YlOrRd',
+    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+
+		folium_static(mOCEANIA)		
 
 
 
