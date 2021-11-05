@@ -97,7 +97,7 @@ world_age_categories = pd.read_csv('world_age_categories.csv')
 boxplot_selectbox = st.selectbox(label='', options=['GDP per regio' , 'Sterfgevallen per regio' , 'Kindersterfte per regio']) 
 
 if boxplot_selectbox == 'GDP per regio':
-	fig_boxplot_gdp = px.box(data_frame=df, x=df['Region'], y='GDP ($ per capita)', 
+	fig_boxplot_gdp = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP ($ per capita)', 
              color='Region')
 	fig_boxplot_gdp.update_xaxes(title_text = 'Regio')
 	fig_boxplot_gdp.update_yaxes(title_text = 'GDP ($ per inwoner)')
@@ -106,7 +106,7 @@ if boxplot_selectbox == 'GDP per regio':
 	st.plotly_chart(fig_boxplot_gdp)
 
 if boxplot_selectbox == 'Sterfgevallen per regio':
-	fig_boxplot_sterfgevallen = px.box(data_frame=df, x=df['Region'], y='Deathrate', 
+	fig_boxplot_sterfgevallen = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='Deathrate', 
              color='Region')
 	fig_boxplot_sterfgevallen.update_xaxes(title_text = 'Regio')
 	fig_boxplot_sterfgevallen.update_yaxes(title_text = 'Sterfgevallen (per 1.000 inwoners)')
@@ -115,7 +115,7 @@ if boxplot_selectbox == 'Sterfgevallen per regio':
 	st.plotly_chart(fig_boxplot_sterfgevallen)
 
 if boxplot_selectbox == 'Kindersterfte per regio':
-	fig_boxplot_kindersterfte = px.box(data_frame=df, x=df['Region'], y='Infant mortality (per 1000 births)', 
+	fig_boxplot_kindersterfte = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='Infant mortality (per 1000 births)', 
              color='Region')
 	fig_boxplot_kindersterfte.update_xaxes(title_text = 'Regio')
 	fig_boxplot_kindersterfte.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes)')
