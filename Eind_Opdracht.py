@@ -710,7 +710,7 @@ st.markdown('***')
 
 modeldf = WHO_data.rename({'GDP ($ per capita)':'GDP','Infant mortality (per 1000 births)':'Infant_mortality'},axis=1,inplace=True)
 
-
+st.table(modeldf)
 modeldf['Infant_log'] = np.log(modeldf['Infant_mortality'])
 
 model_infant = ols('Infant_mortality ~ GDP ', data=modeldf).fit()
