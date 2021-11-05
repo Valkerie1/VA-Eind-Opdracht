@@ -701,5 +701,21 @@ with st.expander('Meer informatie:'):
 		     Als de lagere categorieën een hoog percentage hebben dan heeft het land te maken met 
 		     veel geboortes of veel sterfgevallen. Als de hogere categorieën een hoog percentage hebben
 		     dan betekend dit dat er weinig geboortes zijn en dus dat de bevolking vergrijsd''')
+	
+
+	
+st.markdown('***')
+st.markdown("<h3 style='text-align: center; color: black;'>Kindersterfte linear model</h3>", unsafe_allow_html=True)
+st.markdown('***')	
+
+modeldf = WHO_data
+modeldf.rename({'GDP ($ per capita)':'GDP', 'Infant mortality (per 1000 births)':'Infant_mortality','Phones (per 1000)':'Phones'},axis=1,inplace=True)
+model_infant = ols('Infant_mortality ~ GDP ', data=modeldf).fit()
+
+px.scatter(x='GDP', y='Infant_mortality', data_frame=modeldf, trendline='ols', trendline_color_override='red')
+
+model_infant_log = ols('Infant_log ~ GDP ', data=modeldf).fit()
+px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendline_color_override='red')
+
 
 
