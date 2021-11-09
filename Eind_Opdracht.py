@@ -57,6 +57,9 @@ def load_who_data():
 	
 	remap = {"UnitedStates" : "UnitedStatesofAmerica"}
 	who_data['Country'] = who_data['Country'].replace(remap)
+	
+	who_data.rename({'GDP ($ per capita)':'GDP', 'Infant mortality (per 1000 births)':'Infant_mortality','Phones (per 1000)':'Phones'},axis=1,inplace=True)
+	who_data.drop(who_data[who_data['GDP']>50000].index,inplace=True)
 	return who_data
 
 WHO_data = load_who_data()
@@ -97,7 +100,7 @@ world_age_categories = pd.read_csv('world_age_categories.csv')
 boxplot_selectbox = st.selectbox(label='', options=['Sterfgevallen per regio' , 'Kindersterfte per regio' , 'GDP per regio']) 
 
 if boxplot_selectbox == 'GDP per regio':
-	fig_boxplot_gdp = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP ($ per capita)', 
+	fig_boxplot_gdp = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='GDP', 
              color='Region')
 	fig_boxplot_gdp.update_xaxes(title_text = 'Regio')
 	fig_boxplot_gdp.update_yaxes(title_text = 'GDP ($ per inwoner)')
@@ -115,7 +118,7 @@ if boxplot_selectbox == 'Sterfgevallen per regio':
 	st.plotly_chart(fig_boxplot_sterfgevallen)
 
 if boxplot_selectbox == 'Kindersterfte per regio':
-	fig_boxplot_kindersterfte = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='Infant mortality (per 1000 births)', 
+	fig_boxplot_kindersterfte = px.box(data_frame=WHO_data, x=WHO_data['Region'], y='Infant_mortality', 
              color='Region')
 	fig_boxplot_kindersterfte.update_xaxes(title_text = 'Regio')
 	fig_boxplot_kindersterfte.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes)')
@@ -720,9 +723,9 @@ px.scatter(x='GDP', y='Infant_mortality', data_frame=modeldf, trendline='ols', t
 model_infant_log = ols('Infant_log ~ GDP ', data=modeldf).fit()
 px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendline_color_override='red')
 '''
-modeldf = WHO_data
-modeldf.rename({'GDP ($ per capita)':'GDP', 'Infant mortality (per 1000 births)':'Infant_mortality','Phones (per 1000)':'Phones'},axis=1,inplace=True)
-modeldf.drop(modeldf[modeldf['GDP']>50000].index,inplace=True)
+
+WHO_data.rename({'GDP ($ per capita)':'GDP', 'Infant mortality (per 1000 births)':'Infant_mortality','Phones (per 1000)':'Phones'},axis=1,inplace=True)
+WHO_data.drop(modeldf[modeldf['GDP']>50000].index,inplace=True)
 
 fig_linearmodel = go.Figure()
 fig_linearmodel = px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendline_color_override='red')
