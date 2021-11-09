@@ -733,7 +733,7 @@ col1.plotly_chart(fig_linearmodel)
 
 with st.expander('Meer informatie:'):
 	model_infant = ols('Infant_mortality ~ GDP ', data=WHO_data).fit()
-	model_infant.summary()
+	st.markdown(model_infant.summary())
 
 fig_linearmodel_log = go.Figure()
 fig_linearmodel_log = px.scatter(x='GDP', y='Infant_log', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
