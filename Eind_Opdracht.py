@@ -60,6 +60,7 @@ def load_who_data():
 	
 	who_data.rename({'GDP ($ per capita)':'GDP', 'Infant mortality (per 1000 births)':'Infant_mortality','Phones (per 1000)':'Phones'},axis=1,inplace=True)
 	who_data.drop(who_data[who_data['GDP']>50000].index,inplace=True)
+	who_data['Infant_log'] = np.log(who_data['Infant_mortality'])
 	return who_data
 
 WHO_data = load_who_data()
@@ -726,7 +727,7 @@ px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendli
 
 
 fig_linearmodel = go.Figure()
-fig_linearmodel = px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendline_color_override='red')
+fig_linearmodel = px.scatter(x='GDP', y='Infant_log', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
 st.plotly_chart(fig_linearmodel)
 
 
