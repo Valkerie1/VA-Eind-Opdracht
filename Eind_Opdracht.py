@@ -731,7 +731,7 @@ fig_linearmodel.update_layout({'title':{'text':'Relatie kindersterfte en GDP',
                             'x':0.5}})
 col1.plotly_chart(fig_linearmodel)
 
-with st.expander('Meer informatie:'):
+with col1.expander('Meer informatie:'):
 	model_infant = ols('Infant_mortality ~ GDP ', data=WHO_data).fit()
 	st.write(model_infant.summary())
 
