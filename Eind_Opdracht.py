@@ -712,15 +712,6 @@ st.markdown('***')
 st.markdown("<h3 style='text-align: center; color: black;'>Kindersterfte linear model</h3>", unsafe_allow_html=True)
 st.markdown('***')	
 
-'''
-
-model_infant = ols('Infant_mortality ~ GDP ', data=modeldf).fit()
-px.scatter(x='GDP', y='Infant_mortality', data_frame=modeldf, trendline='ols', trendline_color_override='red')
-
-model_infant_log = ols('Infant_log ~ GDP ', data=modeldf).fit()
-px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendline_color_override='red')
-'''
-
 col1, col2 = st.columns(2)
 
 fig_linearmodel = go.Figure()
@@ -742,6 +733,10 @@ fig_linearmodel_log.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboorte
 fig_linearmodel_log.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
                             'x':0.5}})
 col2.plotly_chart(fig_linearmodel_log)
+
+with col2.expander('Meer informatie:'):
+	model_infant_log = ols('Infant_log ~ GDP ', data=WHO_data).fit()
+	st.write(model_infant_log.summary())
 
 
 
