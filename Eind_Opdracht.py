@@ -738,6 +738,16 @@ with col2.expander('Meer informatie:'):
 	model_infant_log = ols('Infant_log ~ GDP ', data=WHO_data).fit()
 	st.write(model_infant_log.summary())
 
+	
+	
+st.markdown('***')
+st.markdown("<h3 style='text-align: center; color: black;'>Bronnen</h3>", unsafe_allow_html=True)
+st.markdown('***')	
 
+st.markdown(''' 
+https://www.populationpyramid.net/
 
+https://www.who.int/data/collections
+''')
+	
 
