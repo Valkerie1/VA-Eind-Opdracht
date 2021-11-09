@@ -713,10 +713,6 @@ st.markdown("<h3 style='text-align: center; color: black;'>Kindersterfte linear 
 st.markdown('***')	
 
 '''
-modeldf = WHO_data.rename({'GDP ($ per capita)':'GDP','Infant mortality (per 1000 births)':'Infant_mortality'},axis=1,inplace=True)
-
-st.table(modeldf)
-modeldf['Infant_log'] = np.log(modeldf['Infant_mortality'])
 
 model_infant = ols('Infant_mortality ~ GDP ', data=modeldf).fit()
 px.scatter(x='GDP', y='Infant_mortality', data_frame=modeldf, trendline='ols', trendline_color_override='red')
@@ -725,10 +721,23 @@ model_infant_log = ols('Infant_log ~ GDP ', data=modeldf).fit()
 px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendline_color_override='red')
 '''
 
+col1, col2 = st.columns(2)
 
 fig_linearmodel = go.Figure()
-fig_linearmodel = px.scatter(x='GDP', y='Infant_log', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
-st.plotly_chart(fig_linearmodel)
+fig_linearmodel = px.scatter(x='GDP', y='Infant_mortality', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
+fig_linearmodel.update_xaxes(title_text = 'GDP')
+	fig_boxplot_kindersterfte.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes)')
+	fig_boxplot_kindersterfte.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
+                            'x':0.5}})
+col1.plotly_chart(fig_linearmodel)
+
+fig_linearmodel_log = go.Figure()
+fig_linearmodel_log = px.scatter(x='GDP', y='Infant_log', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
+fig_linearmodel_log.update_xaxes(title_text = 'GDP')
+	fig_boxplot_kindersterfte.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes) in logaritmische schaal')
+	fig_boxplot_kindersterfte.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
+                            'x':0.5}})
+col2.plotly_chart(fig_linearmodel_log)
 
 
 
