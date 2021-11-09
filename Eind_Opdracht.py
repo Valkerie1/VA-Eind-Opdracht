@@ -720,5 +720,14 @@ px.scatter(x='GDP', y='Infant_mortality', data_frame=modeldf, trendline='ols', t
 model_infant_log = ols('Infant_log ~ GDP ', data=modeldf).fit()
 px.scatter(x='GDP', y='Infant_log', data_frame=modeldf, trendline='ols', trendline_color_override='red')
 '''
+modeldf = WHO_data
+modeldf.rename({'GDP ($ per capita)':'GDP', 'Infant mortality (per 1000 births)':'Infant_mortality','Phones (per 1000)':'Phones'},axis=1,inplace=True)
+modeldf.drop(modeldf[modeldf['GDP']>50000].index,inplace=True)
+
+fig_linearmodel = go.Figure()
+fig_linearmodel = px.scatter(x='GDP', y='Infant_log', data_frame=testdf, trendline='ols', trendline_color_override='red')
+st.plotly_chart(fig_linearmodel)
+
+
 
 
