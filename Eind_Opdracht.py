@@ -27,6 +27,9 @@ Onder de visualisaties staat een box met "Meer informatie:" hier kun je op klikk
 
 
 
+st.markdown('***')
+st.markdown("<h3 style='text-align: center; color: black;'>Boxplot</h3>", unsafe_allow_html=True)
+st.markdown('***')
 
 
 
@@ -148,6 +151,8 @@ with st.expander('Meer informatie:'):
 
 	
 	
+st.markdown('***')
+st.markdown("<h3 style='text-align: center; color: black;'>Spreidingsdiagram</h3>", unsafe_allow_html=True)
 st.markdown('***')	
 
 
@@ -954,7 +959,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 
 
 st.markdown('***')
-st.markdown("<h3 style='text-align: center; color: black;'>Leeftijdspiramide per land</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center; color: black;'>Histogram van de leeftijdsverdeling per land</h3>", unsafe_allow_html=True)
 st.markdown('***')
 
 
