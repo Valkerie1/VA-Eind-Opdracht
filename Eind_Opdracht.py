@@ -195,13 +195,24 @@ Kaart_variable_opties = col1.selectbox(label= 'Kies een variable:' , options= ['
 kaart_opties = col2.selectbox(label= 'Kies een regio:', options= ['Alles', 'Afrika', 'Asië', 'Europa', 'Gemenebestand van onafhankelijke staten', 'Latijns-Amerika', 'Midden-Oosten','Noord-Amerika','Oceanië'])
 
 
+
+style_function = lambda x: {'fillColor': '#ffffff', 
+                            'color':'#000000', 
+                            'fillOpacity': 0.1, 
+                            'weight': 0.1}
+
+highlight_function = lambda x: {'fillColor': '#000000', 
+                                'color':'#000000', 
+                                'fillOpacity': 0.50, 
+                                'weight': 0.1}
+
 if Kaart_variable_opties == 'GDP':
 	
 	if kaart_opties == 'Alles':
 		m = folium.Map(zoom_control = True, zoom_start=1, location=[50,0],
 		tiles = 'cartodb positron')
 
-		m.choropleth(
+		folium.Choropleth(
     		geo_data = WHO,
     		name = 'geometry',
     		data = WHO,
@@ -210,7 +221,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to(m)
+		
+		Info_m = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;"))
+		m.add_child(Info_m)	
 
 		folium_static(m)
 	
@@ -219,7 +240,7 @@ if Kaart_variable_opties == 'GDP':
 		mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
 		tiles = 'cartodb positron')
 
-		mAFRICA.choropleth(
+		folium.Choropleth(
     		geo_data = AFRICA,
     		name = 'geometry',
     		data = AFRICA,
@@ -228,7 +249,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to(mAFRICA)
+			
+		Info_mAFRICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mAFRICA.add_child(Info_mAFRICA)	
 
 		folium_static(mAFRICA)
 
@@ -236,7 +267,7 @@ if Kaart_variable_opties == 'GDP':
 		mASIA = folium.Map(zoom_control = False, zoom_start=3, location=[28.0893191, 105.1101691],
 		tiles = 'cartodb positron')
 
-		mASIA.choropleth(
+		folium.Choropleth(
     		geo_data = ASIA,
     		name = 'geometry',
     		data = ASIA,
@@ -245,7 +276,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to(mASIA)
+			
+		Info_mASIA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mASIA.add_child(Info_mASIA)	
 
 		folium_static(mASIA)
 
@@ -262,7 +303,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to()
+			
+		Info_mEUROPE = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mEUROPE.add_child(Info_mEUROPE)	
 
 		folium_static(mEUROPE)
 
@@ -279,7 +330,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to()
+			
+		Info_mCIS = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mCIS.add_child(Info_mCIS)	
 
 		folium_static(mCIS)
 
@@ -296,7 +357,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to()
+			
+		Info_mLATINAMERICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mLATINAMERICA.add_child(Info_mLATINAMERICA)	
 
 		folium_static(mLATINAMERICA)
 
@@ -313,7 +384,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to()
+			
+		Info_mMIDDLEEAST = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mMIDDLEEAST.add_child(Info_mMIDDLEEAST)	
 
 		folium_static(mMIDDLEEAST)
 
@@ -330,7 +411,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to()
+			
+		Info_mNORTHERNAMERICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mNORTHERNAMERICA.add_child(Info_mNORTHERNAMERICA)	
 
 		folium_static(mNORTHERNAMERICA)
 
@@ -347,7 +438,17 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)")
+    		legend_name = "GDP ($ per capita)").add_to()
+			
+		Info_mOCEANIA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'GDP'],
+                           aliases=['Land: ','GDP: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mOCEANIA.add_child(Info_mOCEANIA)	
 
 		folium_static(mOCEANIA)
 
@@ -366,7 +467,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_m = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		m.add_child(Info_m)	
 
 		folium_static(m)
 	
@@ -384,7 +495,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_mAFRICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mAFRICA.add_child(Info_mAFRICA)	
 
 		folium_static(mAFRICA)
 
@@ -401,7 +522,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_mASIA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mASIA.add_child(Info_mASIA)	
 
 		folium_static(mASIA)
 
@@ -418,7 +549,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_mEUROPE = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mEUROPE.add_child(Info_mEUROPE)	
 
 		folium_static(mEUROPE)
 
@@ -435,7 +576,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_mCIS = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mCIS.add_child(Info_mCIS)	
 
 		folium_static(mCIS)
 
@@ -452,7 +603,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_mLATINAMERICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mLATINAMERICA.add_child(Info_mLATINAMERICA)	
 
 		folium_static(mLATINAMERICA)
 
@@ -469,7 +630,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_mMIDDLEEAST = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mMIDDLEEAST.add_child(Info_mMIDDLEEAST)	
 
 		folium_static(mMIDDLEEAST)
 
@@ -486,7 +657,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_mNORTHERNAMERICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mNORTHERNAMERICA.add_child(Info_mNORTHERNAMERICA)	
 
 		folium_static(mNORTHERNAMERICA)
 
@@ -503,7 +684,17 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)")
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+			
+		Info_mOCEANIA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Deathrate'],
+                           aliases=['Land: ','Sterfgevallen: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mOCEANIA.add_child(Info_mOCEANIA)	
 
 		folium_static(mOCEANIA)
 		
@@ -522,7 +713,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_m = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		m.add_child(Info_m)	
 
 		folium_static(m)
 	
@@ -540,7 +741,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_mAFRICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mAFRICA.add_child(Info_mAFRICA)	
 
 		folium_static(mAFRICA)
 
@@ -557,7 +768,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_mASIA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mASIA.add_child(Info_mASIA)	
 
 		folium_static(mASIA)
 
@@ -574,7 +795,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_mEUROPE = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mEUROPE.add_child(Info_mEUROPE)	
 
 		folium_static(mEUROPE)
 
@@ -591,7 +822,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_mCIS = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mCIS.add_child(Info_mCIS)	
 
 		folium_static(mCIS)
 
@@ -608,7 +849,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_mLATINAMERICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mLATINAMERICA.add_child(Info_mLATINAMERICA)	
 
 		folium_static(mLATINAMERICA)
 
@@ -625,7 +876,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_mMIDDLEEAST = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mMIDDLEEAST.add_child(Info_mMIDDLEEAST)	
 
 		folium_static(mMIDDLEEAST)
 
@@ -642,7 +903,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_mNORTHERNAMERICA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mNORTHERNAMERICA.add_child(Info_mNORTHERNAMERICA)	
 
 		folium_static(mNORTHERNAMERICA)
 
@@ -659,7 +930,17 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)")
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+			
+		Info_mOCEANIA = folium.features.GeoJson(
+                           WHO,
+                           style_function=style_function, 
+                           highlight_function=highlight_function, 
+                           tooltip=folium.features.GeoJsonTooltip(
+                           fields=['Country', 'Infant_mortality'],
+                           aliases=['Land: ','Kindersterfte: '],
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
+		mOCEANIA.add_child(Info_mOCEANIA)	
 
 		folium_static(mOCEANIA)		
 
