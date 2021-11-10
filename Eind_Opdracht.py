@@ -12,12 +12,16 @@ import folium
 st.set_page_config(page_title = 'Streamlit Dashboard', layout= 'wide')
 
 st.markdown('***')
-st.markdown("<h1 style='text-align: center; color: black;'>Levensverwachting over de wereld</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: black;'>(Kinder)sterfte in de wereld</h1>", unsafe_allow_html=True)
 st.markdown('***')
 
 st.markdown('''
 
-beetje text
+Welkom op dit interactieve dashboard!
+
+In dit dashboard kijken we naar de relaties tussen (kinder)sterfte en GDP per regio. 
+Alle visualisaties zijn interactief, wat inhoudt dat je precies kunt selecteren/filteren wat je wilt zien. 
+Onder de visualisaties staat een box met "Meer informatie:" hier kun je op klikken om meer inzage te krijgen in de visualisaties en wat er nou precies wordt weergegeven.
 
 ''')
 
