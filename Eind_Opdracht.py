@@ -989,7 +989,7 @@ fig_bar_population = go.Figure()
 fig_bar_population.add_trace(go.Bar(y=y_range, x=-men, name='Male', orientation = 'h'))
 fig_bar_population.add_trace(go.Bar(y=y_range, x=women, name='Female', orientation = 'h'))
 
-fig_bar_population.update_layout(title={'text': 'Population pyramid of '+str(country_input), 'x' : 0.5},
+fig_bar_population.update_layout(title={'text': 'Populatie piramide van '+str(country_input), 'x' : 0.5},
                  xaxis={'range':layout_range,
                        'tickvals':layout_tick_vals,
                        'ticktext':layout_tick_text,
