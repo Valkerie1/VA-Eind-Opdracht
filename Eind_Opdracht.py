@@ -149,34 +149,35 @@ st.markdown('***')
 
 col1, col2 = st.columns(2)
 
-fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
+fig_scatter_trend = st.checkbox('Trendlijn', value=False)
+
+if fig_scatter_trend == True:
+	fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
                 x='GDP',
                 y='Infant_mortality',
                 trendline='ols', 
                 trendline_options=dict(log_y=True),
                 trendline_color_override="red")
 
-fig_scatter_GDP_InfantMortality.update_xaxes(title_text = 'GDP ($ per inwoner)')
-fig_scatter_GDP_InfantMortality.update_yaxes(title_text = 'Kindersterfte (per 1000 geboortes)')
-fig_scatter_GDP_InfantMortality.update_layout({'title':{'text':'Relatie tussen GDP en kindersterfte', 
+	fig_scatter_GDP_InfantMortality.update_xaxes(title_text = 'GDP ($ per inwoner)')
+	fig_scatter_GDP_InfantMortality.update_yaxes(title_text = 'Kindersterfte (per 1000 geboortes)')
+	fig_scatter_GDP_InfantMortality.update_layout({'title':{'text':'Relatie tussen GDP en kindersterfte', 
                                                                'x':0.5}})
     
-col1.plotly_chart(fig_scatter_GDP_InfantMortality)
-
-
-fig_scatter_GDP_Literacy = px.scatter(data_frame=WHO_data,
+	col2.plotly_chart(fig_scatter_GDP_InfantMortality)
+if fig_scatter_trend == False:
+	fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
                 x='GDP',
-                y='Literacy (%)',
-                trendline='ols',
-                trendline_options=dict(log_x=True),
-                trendline_color_override="red")
+                y='Infant_mortality')
 
-fig_scatter_GDP_Literacy.update_xaxes(title_text = 'GDP ($ per inwoner)')
-fig_scatter_GDP_Literacy.update_yaxes(title_text = 'Geletterdheid (in %)')
-fig_scatter_GDP_Literacy.update_layout({'title':{'text':'Relatie tussen GDP en de geletterdheid', 
-                                                        'x':0.5}})
+	fig_scatter_GDP_InfantMortality.update_xaxes(title_text = 'GDP ($ per inwoner)')
+	fig_scatter_GDP_InfantMortality.update_yaxes(title_text = 'Kindersterfte (per 1000 geboortes)')
+	fig_scatter_GDP_InfantMortality.update_layout({'title':{'text':'Relatie tussen GDP en kindersterfte', 
+                                                               'x':0.5}})
     
-col2.plotly_chart(fig_scatter_GDP_Literacy)
+	col2.plotly_chart(fig_scatter_GDP_InfantMortality)	
+
+
 
 
 
@@ -1037,6 +1038,8 @@ st.markdown('''
 https://www.populationpyramid.net/
 
 https://www.who.int/data/collections
+
+https://datahub.io/core/geo-countries
 ''')
 	
 
