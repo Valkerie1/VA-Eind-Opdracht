@@ -1033,7 +1033,7 @@ if fig_linearmodel_trend == True:
 		
 if fig_linearmodel_trend == False:
 	fig_linearmodel = go.Figure()
-	fig_linearmodel = px.scatter(x='GDP', y='Infant_mortality')
+	fig_linearmodel = px.scatter(x='GDP', y='Infant_mortality', data_frame=WHO_data)
 	fig_linearmodel.update_xaxes(title_text = 'GDP')
 	fig_linearmodel.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes)')
 	fig_linearmodel.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
@@ -1045,7 +1045,7 @@ if fig_linearmodel_trend == False:
 		st.write(model_infant.summary())
 
 	fig_linearmodel_log = go.Figure()
-	fig_linearmodel_log = px.scatter(x='GDP', y='Infant_log')
+	fig_linearmodel_log = px.scatter(x='GDP', y='Infant_log', data_frame=WHO_data)
 	fig_linearmodel_log.update_xaxes(title_text = 'GDP')
 	fig_linearmodel_log.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes) in logaritmische schaal')
 	fig_linearmodel_log.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
@@ -1056,9 +1056,8 @@ if fig_linearmodel_trend == False:
 		model_infant_log = ols('Infant_log ~ GDP ', data=WHO_data).fit()
 		st.write(model_infant_log.summary())		
 
+		
 
-
-	
 	
 st.markdown('***')
 st.markdown("<h3 style='text-align: center; color: black;'>Bronnen</h3>", unsafe_allow_html=True)
