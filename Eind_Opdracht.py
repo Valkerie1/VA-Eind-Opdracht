@@ -997,7 +997,8 @@ fig_bar_population.update_layout(title={'text': 'Populatie piramide van '+str(co
                  yaxis={'title':'Leeftijd'},
                  barmode='overlay',
                  bargap=0.1,
-                 hovermode='x'
+                 hovermode='x',
+                 colorway=['powderblue','hotpink']
                  )               
 
 st.plotly_chart(fig_bar_population)
