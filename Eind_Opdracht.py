@@ -187,7 +187,11 @@ if fig_scatter_trend == False:
 	col1.plotly_chart(fig_scatter_GDP_InfantMortality)	
 
 
-
+with st.expander('Meer informatie:'):
+	st.subheader('Spreidingsdiagram extra informatie')
+	st.markdown('''In dit spreidingsdiagram is de relatie tussen kindersterfte en GDP te zien. 
+	In deze spreidingsdiagram is duidelijk zichtbaar dat het aannemelijk is dat als een land een hoge GDP heeft dat de kans op een hoge kindersterfte klein is. 
+	Met de optie "Trendlijn" kan de trendlijn worden weergegeven.''')
 
 
 
@@ -954,7 +958,12 @@ if Kaart_variable_opties == 'Kindersterfte':
 
 		folium_static(mOCEANIA)		
 
-
+with st.expander('Meer informatie:'):
+	st.subheader('Wereldkaart extra informatie')
+	st.markdown('''In deze visualisatie is de wereldkaart te zien. 
+	Je kunt de variabelen kindersterfte, sterfgevallen en GDP selecteren in de linker dropdown menu en aan de rechterkant kan je selecteren van welke regio de data wilt zien. 
+	In de legenda is te zien hoe donkerder rood de kleur is hoe hoger de waardes zijn. De kleuren worden bepaald op basis van de data die is aangevinkt, 
+	dus als bijvoorbeeld alleen Europa is aangeklikt als regio dan wordt de donkerheid bepaald aan de hand van alleen de landen in Europa.''')
 
 
 
@@ -999,8 +1008,8 @@ with st.expander('Meer informatie:'):
 	st.subheader('Leeftijdspiramide extra informatie')
 	st.markdown('''De Leeftijdspiramide geeft weer hoe de leeftijd binnen een bepaald land is opgebouwd. 
 		     Dit wordt gedaan door het land in verschillende leeftijdscategorieën op te delen.
-		     Daarna wordt het percentage berekend dat zich in elke leeftijdscategorie bevind.
-		     Een gezonde bevolking heeft in elke leeftijdscategorie het zelfde percentage zitten.
+		     Daarna wordt het percentage van de bevolking berekend dat zich in elke leeftijdscategorie bevind.
+		     Een gezonde bevolking heeft in elke leeftijdscategorie hetzelfde percentage zitten.
 		     Als de lagere categorieën een hoog percentage hebben dan heeft het land te maken met 
 		     veel geboortes of veel sterfgevallen. Als de hogere categorieën een hoog percentage hebben
 		     dan betekend dit dat er weinig geboortes zijn en dus dat de bevolking vergrijsd''')
@@ -1024,7 +1033,7 @@ if fig_linearmodel_trend == True:
                             'x':0.5}})
 	col1.plotly_chart(fig_linearmodel)
 
-	with col1.expander('Meer informatie:'):
+	with col1.expander('Model samenvatting:'):
 		model_infant = ols('Infant_mortality ~ GDP ', data=WHO_data).fit()
 		st.write(model_infant.summary())
 
@@ -1036,7 +1045,7 @@ if fig_linearmodel_trend == True:
                             'x':0.5}})
 	col2.plotly_chart(fig_linearmodel_log)
 
-	with col2.expander('Meer informatie:'):
+	with col2.expander('Model samenvatting:'):
 		model_infant_log = ols('Infant_log ~ GDP ', data=WHO_data).fit()
 		st.write(model_infant_log.summary())
 		
@@ -1049,7 +1058,7 @@ if fig_linearmodel_trend == False:
                             'x':0.5}})
 	col1.plotly_chart(fig_linearmodel)
 
-	with col1.expander('Meer informatie:'):
+	with col1.expander('Model samenvatting:'):
 		model_infant = ols('Infant_mortality ~ GDP ', data=WHO_data).fit()
 		st.write(model_infant.summary())
 
@@ -1061,10 +1070,17 @@ if fig_linearmodel_trend == False:
                             'x':0.5}})
 	col2.plotly_chart(fig_linearmodel_log)
 
-	with col2.expander('Meer informatie:'):
+	with col2.expander('Model samenvatting:'):
 		model_infant_log = ols('Infant_log ~ GDP ', data=WHO_data).fit()
 		st.write(model_infant_log.summary())		
 
+with st.expander('Meer informatie:'):
+	st.subheader('Linear model extra informatie')
+	st.markdown('''Aan de linkerkant staat een grafiek met de relatie tussen kindersterfte en GDP. 
+	Hierop is een voorspellingsmodel toegepast en zoals te zien is bij de samenvatting van het model heeft deze een R-squared van 0,38. 
+	Aan de rechterkant is ook een grafiek weergegeven met dezelfde relatie als de linker grafiek, alleen hier staan de waardes op een logaritmische schaal. 
+	Ook op de rechter grafiek is een voorspellingsmodel toegepast, deze geeft een R-squared 0,65. Dit is een significante verbetering van het model. 
+	Met dit model kan dus op een goede manier de kindersterfte voorspeld worden aan de hand van het GDP.''')		
 		
 
 	
@@ -1079,5 +1095,10 @@ https://www.who.int/data/collections
 
 https://datahub.io/core/geo-countries
 ''')
-	
 
+st.markdown('''
+Gemaakt door:
+
+- Jelle Aardema 500815973
+- Daan Bouwmeester 500826025
+''')
