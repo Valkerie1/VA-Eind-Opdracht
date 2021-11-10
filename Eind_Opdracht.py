@@ -149,7 +149,7 @@ st.markdown('***')
 
 col1, col2 = st.columns(2)
 
-fig_scatter_trend = st.checkbox('Trendlijn', value=False)
+fig_scatter_trend = col2.checkbox('Trendlijn', value=False)
 
 if fig_scatter_trend == True:
 	fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
@@ -164,7 +164,7 @@ if fig_scatter_trend == True:
 	fig_scatter_GDP_InfantMortality.update_layout({'title':{'text':'Relatie tussen GDP en kindersterfte', 
                                                                'x':0.5}})
     
-	col2.plotly_chart(fig_scatter_GDP_InfantMortality)
+	col1.plotly_chart(fig_scatter_GDP_InfantMortality)
 if fig_scatter_trend == False:
 	fig_scatter_GDP_InfantMortality = px.scatter(data_frame=WHO_data,
                 x='GDP',
@@ -175,7 +175,7 @@ if fig_scatter_trend == False:
 	fig_scatter_GDP_InfantMortality.update_layout({'title':{'text':'Relatie tussen GDP en kindersterfte', 
                                                                'x':0.5}})
     
-	col2.plotly_chart(fig_scatter_GDP_InfantMortality)	
+	col1.plotly_chart(fig_scatter_GDP_InfantMortality)	
 
 
 
