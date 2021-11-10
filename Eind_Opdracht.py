@@ -294,7 +294,7 @@ if Kaart_variable_opties == 'GDP':
 		mEUROPE = folium.Map(zoom_control = False, zoom_start=3, location=[54.0893191, 25.1101691],
 		tiles = 'cartodb positron')
 
-		mEUROPE.choropleth(
+		folium.Choropleth(
     		geo_data = EUROPE,
     		name = 'geometry',
     		data = EUROPE,
@@ -303,7 +303,7 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)").add_to()
+    		legend_name = "GDP ($ per capita)").add_to(mEUROPE)
 			
 		Info_mEUROPE = folium.features.GeoJson(
                            WHO,
@@ -321,7 +321,7 @@ if Kaart_variable_opties == 'GDP':
 		mCIS = folium.Map(zoom_control = False, zoom_start=2, location=[65.0893191, 100.1101691],
 		tiles = 'cartodb positron')
 
-		mCIS.choropleth(
+		folium.Choropleth(
     		geo_data = CIS,
     		name = 'geometry',
     		data = CIS,
@@ -330,7 +330,7 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)").add_to()
+    		legend_name = "GDP ($ per capita)").add_to(mCIS)
 			
 		Info_mCIS = folium.features.GeoJson(
                            WHO,
@@ -348,7 +348,7 @@ if Kaart_variable_opties == 'GDP':
 		mLATINAMERICA = folium.Map(zoom_control = False, zoom_start=3, location=[-18, -60.1101691],
 		tiles = 'cartodb positron')
 
-		mLATINAMERICA.choropleth(
+		folium.Choropleth(
     		geo_data = LATINAMERICA,
     		name = 'geometry',
     		data = LATINAMERICA,
@@ -357,7 +357,7 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)").add_to()
+    		legend_name = "GDP ($ per capita)").add_to(mLATINAMERICA)
 			
 		Info_mLATINAMERICA = folium.features.GeoJson(
                            WHO,
@@ -375,7 +375,7 @@ if Kaart_variable_opties == 'GDP':
 		mMIDDLEEAST = folium.Map(zoom_control = False, zoom_start=4, location=[30.0893191, 45.1101691],
 		tiles = 'cartodb positron')
 
-		mMIDDLEEAST.choropleth(
+		folium.Choropleth(
     		geo_data = MIDDLEEAST,
     		name = 'geometry',
     		data = MIDDLEEAST,
@@ -384,7 +384,7 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)").add_to()
+    		legend_name = "GDP ($ per capita)").add_to(mMIDDLEEAST)
 			
 		Info_mMIDDLEEAST = folium.features.GeoJson(
                            WHO,
@@ -402,7 +402,7 @@ if Kaart_variable_opties == 'GDP':
 		mNORTHERNAMERICA = folium.Map(zoom_control = False, zoom_start=2, location=[70.0893191, -110.1101691],
 		tiles = 'cartodb positron')
 
-		mNORTHERNAMERICA.choropleth(
+		folium.Choropleth(
     		geo_data = NORTHERNAMERICA,
     		name = 'geometry',
     		data = NORTHERNAMERICA,
@@ -411,7 +411,7 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)").add_to()
+    		legend_name = "GDP ($ per capita)").add_to(mNORTHERNAMERICA)
 			
 		Info_mNORTHERNAMERICA = folium.features.GeoJson(
                            WHO,
@@ -429,7 +429,7 @@ if Kaart_variable_opties == 'GDP':
 		mOCEANIA = folium.Map(zoom_control = False, zoom_start=3, location=[-35.0893191, 140.1101691],
 		tiles = 'cartodb positron')
 
-		mOCEANIA.choropleth(
+		folium.Choropleth(
     		geo_data = OCEANIA,
     		name = 'geometry',
     		data = OCEANIA,
@@ -438,7 +438,7 @@ if Kaart_variable_opties == 'GDP':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "GDP ($ per capita)").add_to()
+    		legend_name = "GDP ($ per capita)").add_to(mOCEANIA)
 			
 		Info_mOCEANIA = folium.features.GeoJson(
                            WHO,
@@ -458,7 +458,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		m = folium.Map(zoom_control = True, zoom_start=1, location=[50,0],
 		tiles = 'cartodb positron')
 
-		m.choropleth(
+		folium.Choropleth(
     		geo_data = WHO,
     		name = 'geometry',
     		data = WHO,
@@ -467,7 +467,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(m)
 			
 		Info_m = folium.features.GeoJson(
                            WHO,
@@ -486,7 +486,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
 		tiles = 'cartodb positron')
 
-		mAFRICA.choropleth(
+		folium.Choropleth(
     		geo_data = AFRICA,
     		name = 'geometry',
     		data = AFRICA,
@@ -495,7 +495,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(mAFRICA)
 			
 		Info_mAFRICA = folium.features.GeoJson(
                            WHO,
@@ -513,7 +513,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		mASIA = folium.Map(zoom_control = False, zoom_start=3, location=[28.0893191, 105.1101691],
 		tiles = 'cartodb positron')
 
-		mASIA.choropleth(
+		folium.Choropleth(
     		geo_data = ASIA,
     		name = 'geometry',
     		data = ASIA,
@@ -522,7 +522,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(mASIA)
 			
 		Info_mASIA = folium.features.GeoJson(
                            WHO,
@@ -540,7 +540,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		mEUROPE = folium.Map(zoom_control = False, zoom_start=3, location=[54.0893191, 25.1101691],
 		tiles = 'cartodb positron')
 
-		mEUROPE.choropleth(
+		folium.Choropleth(
     		geo_data = EUROPE,
     		name = 'geometry',
     		data = EUROPE,
@@ -549,7 +549,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(mEUROPE)
 			
 		Info_mEUROPE = folium.features.GeoJson(
                            WHO,
@@ -567,7 +567,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		mCIS = folium.Map(zoom_control = False, zoom_start=2, location=[65.0893191, 100.1101691],
 		tiles = 'cartodb positron')
 
-		mCIS.choropleth(
+		folium.Choropleth(
     		geo_data = CIS,
     		name = 'geometry',
     		data = CIS,
@@ -576,7 +576,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(mCIS)
 			
 		Info_mCIS = folium.features.GeoJson(
                            WHO,
@@ -594,7 +594,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		mLATINAMERICA = folium.Map(zoom_control = False, zoom_start=3, location=[-18, -60.1101691],
 		tiles = 'cartodb positron')
 
-		mLATINAMERICA.choropleth(
+		folium.Choropleth(
     		geo_data = LATINAMERICA,
     		name = 'geometry',
     		data = LATINAMERICA,
@@ -603,7 +603,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(mLATINAMERICA)
 			
 		Info_mLATINAMERICA = folium.features.GeoJson(
                            WHO,
@@ -621,7 +621,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		mMIDDLEEAST = folium.Map(zoom_control = False, zoom_start=4, location=[30.0893191, 45.1101691],
 		tiles = 'cartodb positron')
 
-		mMIDDLEEAST.choropleth(
+		folium.Choropleth(
     		geo_data = MIDDLEEAST,
     		name = 'geometry',
     		data = MIDDLEEAST,
@@ -630,7 +630,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(mMIDDLEEAST)
 			
 		Info_mMIDDLEEAST = folium.features.GeoJson(
                            WHO,
@@ -648,7 +648,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		mNORTHERNAMERICA = folium.Map(zoom_control = False, zoom_start=2, location=[70.0893191, -110.1101691],
 		tiles = 'cartodb positron')
 
-		mNORTHERNAMERICA.choropleth(
+		folium.Choropleth(
     		geo_data = NORTHERNAMERICA,
     		name = 'geometry',
     		data = NORTHERNAMERICA,
@@ -657,7 +657,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(mNORTHERNAMERICA)
 			
 		Info_mNORTHERNAMERICA = folium.features.GeoJson(
                            WHO,
@@ -675,7 +675,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
 		mOCEANIA = folium.Map(zoom_control = False, zoom_start=3, location=[-35.0893191, 140.1101691],
 		tiles = 'cartodb positron')
 
-		mOCEANIA.choropleth(
+		folium.Choropleth(
     		geo_data = OCEANIA,
     		name = 'geometry',
     		data = OCEANIA,
@@ -684,7 +684,7 @@ if Kaart_variable_opties == 'Sterfgevallen':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to()
+    		legend_name = "Sterfgevallen (per 1.000 inwoners)").add_to(mOCEANIA)
 			
 		Info_mOCEANIA = folium.features.GeoJson(
                            WHO,
@@ -704,7 +704,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		m = folium.Map(zoom_control = True, zoom_start=1, location=[50,0],
 		tiles = 'cartodb positron')
 
-		m.choropleth(
+		folium.Choropleth(
     		geo_data = WHO,
     		name = 'geometry',
     		data = WHO,
@@ -713,7 +713,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(m)
 			
 		Info_m = folium.features.GeoJson(
                            WHO,
@@ -732,7 +732,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		mAFRICA = folium.Map(zoom_control = False, zoom_start=3, location=[0.0893191, 15.1101691],
 		tiles = 'cartodb positron')
 
-		mAFRICA.choropleth(
+		folium.Choropleth(
     		geo_data = AFRICA,
     		name = 'geometry',
     		data = AFRICA,
@@ -741,7 +741,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(mAFRICA)
 			
 		Info_mAFRICA = folium.features.GeoJson(
                            WHO,
@@ -759,7 +759,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		mASIA = folium.Map(zoom_control = False, zoom_start=3, location=[28.0893191, 105.1101691],
 		tiles = 'cartodb positron')
 
-		mASIA.choropleth(
+		folium.Choropleth(
     		geo_data = ASIA,
     		name = 'geometry',
     		data = ASIA,
@@ -768,7 +768,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(mASIA)
 			
 		Info_mASIA = folium.features.GeoJson(
                            WHO,
@@ -786,7 +786,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		mEUROPE = folium.Map(zoom_control = False, zoom_start=3, location=[54.0893191, 25.1101691],
 		tiles = 'cartodb positron')
 
-		mEUROPE.choropleth(
+		folium.Choropleth(
     		geo_data = EUROPE,
     		name = 'geometry',
     		data = EUROPE,
@@ -795,7 +795,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(mEUROPE)
 			
 		Info_mEUROPE = folium.features.GeoJson(
                            WHO,
@@ -813,7 +813,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		mCIS = folium.Map(zoom_control = False, zoom_start=2, location=[65.0893191, 100.1101691],
 		tiles = 'cartodb positron')
 
-		mCIS.choropleth(
+		folium.Choropleth(
     		geo_data = CIS,
     		name = 'geometry',
     		data = CIS,
@@ -822,7 +822,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(mCIS)
 			
 		Info_mCIS = folium.features.GeoJson(
                            WHO,
@@ -840,7 +840,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		mLATINAMERICA = folium.Map(zoom_control = False, zoom_start=3, location=[-18, -60.1101691],
 		tiles = 'cartodb positron')
 
-		mLATINAMERICA.choropleth(
+		folium.Choropleth(
     		geo_data = LATINAMERICA,
     		name = 'geometry',
     		data = LATINAMERICA,
@@ -849,7 +849,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(mLATINAMERICA)
 			
 		Info_mLATINAMERICA = folium.features.GeoJson(
                            WHO,
@@ -867,7 +867,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		mMIDDLEEAST = folium.Map(zoom_control = False, zoom_start=4, location=[30.0893191, 45.1101691],
 		tiles = 'cartodb positron')
 
-		mMIDDLEEAST.choropleth(
+		folium.Choropleth(
     		geo_data = MIDDLEEAST,
     		name = 'geometry',
     		data = MIDDLEEAST,
@@ -876,7 +876,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(mMIDDLEEAST)
 			
 		Info_mMIDDLEEAST = folium.features.GeoJson(
                            WHO,
@@ -894,7 +894,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		mNORTHERNAMERICA = folium.Map(zoom_control = False, zoom_start=2, location=[70.0893191, -110.1101691],
 		tiles = 'cartodb positron')
 
-		mNORTHERNAMERICA.choropleth(
+		folium.Choropleth(
     		geo_data = NORTHERNAMERICA,
     		name = 'geometry',
     		data = NORTHERNAMERICA,
@@ -903,7 +903,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(mNORTHERNAMERICA)
 			
 		Info_mNORTHERNAMERICA = folium.features.GeoJson(
                            WHO,
@@ -921,7 +921,7 @@ if Kaart_variable_opties == 'Kindersterfte':
 		mOCEANIA = folium.Map(zoom_control = False, zoom_start=3, location=[-35.0893191, 140.1101691],
 		tiles = 'cartodb positron')
 
-		mOCEANIA.choropleth(
+		folium.Choropleth(
     		geo_data = OCEANIA,
     		name = 'geometry',
     		data = OCEANIA,
@@ -930,7 +930,7 @@ if Kaart_variable_opties == 'Kindersterfte':
     		line_opacity = 0.5,
     		fill_opacity = 0.75,
     		fill_color = 'YlOrRd',
-    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to()
+    		legend_name = "Kindersterfte (per 1.000 geboortes)").add_to(mOCEANIA)
 			
 		Info_mOCEANIA = folium.features.GeoJson(
                            WHO,
