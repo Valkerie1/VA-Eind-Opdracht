@@ -230,7 +230,7 @@ if Kaart_variable_opties == 'GDP':
                            tooltip=folium.features.GeoJsonTooltip(
                            fields=['Country', 'GDP'],
                            aliases=['Land: ','GDP: '],
-                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;"))
+                           style=("background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px;")))
 		m.add_child(Info_m)	
 
 		folium_static(m)
