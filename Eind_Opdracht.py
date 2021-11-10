@@ -55,7 +55,15 @@ def load_who_data():
 	who_data['Region'] = who_data['Region'].replace(mappings)
 	who_data['Country'] = who_data['Country'].str.replace(' ','')
 	
-	remap = {"UnitedStates" : "UnitedStatesofAmerica"}
+	remap = {"UnitedStates" : "UnitedStatesofAmerica", 
+        	"Congo,Dem.Rep." : "DemocraticRepublicoftheCongo",
+        	"Congo,Repub.ofthe" : "RepublicofCongo",
+        	"Tanzania" : "UnitedRepublicofTanzania",
+       		"CentralAfricanRep." : "CentralAfricanRepublic",
+        	"Bosnia&Herzegovina":"BosniaandHerzegovina",
+        	"Serbia":"RepublicofSerbia", 
+        	"Korea,North" : "NorthKorea",
+        	"Korea,South" : "SouthKorea"}
 	who_data['Country'] = who_data['Country'].replace(remap)
 	
 	who_data.rename({'GDP ($ per capita)':'GDP', 'Infant mortality (per 1000 births)':'Infant_mortality','Phones (per 1000)':'Phones'},axis=1,inplace=True)
