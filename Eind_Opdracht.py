@@ -1097,6 +1097,10 @@ https://datahub.io/core/geo-countries
 ''')
 
 st.markdown('''
+
+
+
+
 Gemaakt door:
 
 - Jelle Aardema 500815973
