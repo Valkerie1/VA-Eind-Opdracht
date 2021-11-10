@@ -1002,31 +1002,61 @@ st.markdown('***')
 st.markdown("<h3 style='text-align: center; color: black;'>Kindersterfte linear model</h3>", unsafe_allow_html=True)
 st.markdown('***')	
 
+fig_linearmodel_trend = st.checkbox('Trendlijn', value=True)
+
 col1, col2 = st.columns(2)
 
-fig_linearmodel = go.Figure()
-fig_linearmodel = px.scatter(x='GDP', y='Infant_mortality', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
-fig_linearmodel.update_xaxes(title_text = 'GDP')
-fig_linearmodel.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes)')
-fig_linearmodel.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
+if fig_linearmodel_trend == True:
+	fig_linearmodel = go.Figure()
+	fig_linearmodel = px.scatter(x='GDP', y='Infant_mortality', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
+	fig_linearmodel.update_xaxes(title_text = 'GDP')
+	fig_linearmodel.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes)')
+	fig_linearmodel.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
                             'x':0.5}})
-col1.plotly_chart(fig_linearmodel)
+	col1.plotly_chart(fig_linearmodel)
 
-with col1.expander('Meer informatie:'):
-	model_infant = ols('Infant_mortality ~ GDP ', data=WHO_data).fit()
-	st.write(model_infant.summary())
+	with col1.expander('Meer informatie:'):
+		model_infant = ols('Infant_mortality ~ GDP ', data=WHO_data).fit()
+		st.write(model_infant.summary())
 
-fig_linearmodel_log = go.Figure()
-fig_linearmodel_log = px.scatter(x='GDP', y='Infant_log', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
-fig_linearmodel_log.update_xaxes(title_text = 'GDP')
-fig_linearmodel_log.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes) in logaritmische schaal')
-fig_linearmodel_log.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
+	fig_linearmodel_log = go.Figure()
+	fig_linearmodel_log = px.scatter(x='GDP', y='Infant_log', data_frame=WHO_data, trendline='ols', trendline_color_override='red')
+	fig_linearmodel_log.update_xaxes(title_text = 'GDP')
+	fig_linearmodel_log.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes) in logaritmische schaal')
+	fig_linearmodel_log.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
                             'x':0.5}})
-col2.plotly_chart(fig_linearmodel_log)
+	col2.plotly_chart(fig_linearmodel_log)
 
-with col2.expander('Meer informatie:'):
-	model_infant_log = ols('Infant_log ~ GDP ', data=WHO_data).fit()
-	st.write(model_infant_log.summary())
+	with col2.expander('Meer informatie:'):
+		model_infant_log = ols('Infant_log ~ GDP ', data=WHO_data).fit()
+		st.write(model_infant_log.summary())
+		
+if fig_linearmodel_trend == False:
+	fig_linearmodel = go.Figure()
+	fig_linearmodel = px.scatter(x='GDP', y='Infant_mortality')
+	fig_linearmodel.update_xaxes(title_text = 'GDP')
+	fig_linearmodel.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes)')
+	fig_linearmodel.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
+                            'x':0.5}})
+	col1.plotly_chart(fig_linearmodel)
+
+	with col1.expander('Meer informatie:'):
+		model_infant = ols('Infant_mortality ~ GDP ', data=WHO_data).fit()
+		st.write(model_infant.summary())
+
+	fig_linearmodel_log = go.Figure()
+	fig_linearmodel_log = px.scatter(x='GDP', y='Infant_log')
+	fig_linearmodel_log.update_xaxes(title_text = 'GDP')
+	fig_linearmodel_log.update_yaxes(title_text = 'Kindersterfte (per 1.000 geboortes) in logaritmische schaal')
+	fig_linearmodel_log.update_layout({'title':{'text':'Relatie kindersterfte en GDP', 
+                            'x':0.5}})
+	col2.plotly_chart(fig_linearmodel_log)
+
+	with col2.expander('Meer informatie:'):
+		model_infant_log = ols('Infant_log ~ GDP ', data=WHO_data).fit()
+		st.write(model_infant_log.summary())		
+
+
 
 	
 	
